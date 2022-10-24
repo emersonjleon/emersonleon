@@ -1,0 +1,95 @@
+<!doctype html>
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h4>Sesion actual</h4>
+    <div>
+      
+      {% if historias %}
+         Estas son las historias de la sesión actual:
+      
+        {% for post in historias %}
+          <p> <b>{{post.titulo }}</b>, de {{post.autor}} </p>
+        {% endfor %}
+      {% else %}
+        <p> Aun no hay historias aquí...</p>	  
+      {% endif %}
+    </div>
+
+
+    <div>      
+      <form action="/sesiones" method="post">
+	<input type="hidden" name="myaction" value="guardarhistorias" />
+	  <input type="submit"  text value="Guardar historias" />
+	  <input type="text" name="sesionname" placeholder="nombre de la sesión" required />
+      </form>
+    </div>
+
+
+    {% if historias%}
+    <div class="leftalign">
+
+      <form action="/sesiones" method="post">
+	<input type="hidden" name="myaction" value="borrarhistorias" />
+	<p>
+	  Cuidado, se borraran todas las historias actuales
+	</p>
+        <input type="submit" text value="Borrar historias" />
+      </form>
+    </div>
+    {% endif %}
+
+    
+    {% if sesiones%}
+
+    <h4>Sesiones Anteriores</h4>
+
+    <div class=story>
+
+      {% for s in sesiones %}
+      <p> <b>{{s.nombre}}  </b>({{s.fecha}})</p>
+      <p>
+	  {% for post in s.historias %}
+	     {{post.titulo }}, de {{post.autor}};
+	  {% endfor %}
+      </p>
+      {% endfor %}
+    </div>
+
+
+
+    <div class="center">
+      <h4>Cargar sesión</h4>
+      <form action="/sesiones" method="post">
+	<input type="hidden" name="myaction" value="cargarsesion" />
+	<input type="text" name="cargarsesion" placeholder="Nombre de la sesión" required />
+	  <input type="submit" text value="Cargar sesión" />
+      </form>
+    
+      
+    </div>
+
+
+    
+    <div class="center">
+      <h4>Borrar sesión</h4>
+      <form action="/sesiones" method="post">
+	<input type="hidden" name="myaction" value="borrarsesionguardada" />
+	<input type="text" name="deletesesion" placeholder="Nombre de la sesión" required />
+	  <input type="submit" text value="Eliminar sesión" />
+      </form>
+    
+      {% if nota %}
+          <p> {{nota}}</p>
+      {% endif %}
+    </div>
+    
+    {% endif %}
+      
+    
+  
+
+
+
+{% endblock %}

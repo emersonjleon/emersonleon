@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <head>
+    <title>Personal Pages</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='cyborgshaman.jpg') }}"
+      />
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+  <body>
+    <div class="w3-container center"> 
+       <a href="/index"> <img src="{{ url_for('static', filename='cyborgshaman.jpg') }}" width="150" height="150" cursor="default"   /> </a>
+     <h3>Personal Pages</h3>
+  
+  <hr>
+	<h4>Index</h4>
+	<div>
+	  
+	  {% for link in links %}
+	  <p> <a href="{{link[0]}}"> {{link[0]}}</a>  </p>
+	  {% endfor %}
+	</div>
+    </div>
+
+{% block content %}{% endblock %}
+ 
+    
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <head>
+      <title>Emerson León</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='icos.jpg') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+  <body>
+     <div class="w3-container center"> 
+     <!--a href="/index"> <img src="{{ url_for('static', filename='cyborgshaman.jpg') }}" width="150" height="150" cursor="default"   /> </a-->
+  <h3>Emerson León</h3>
+
+  <div> 
+    <a href="/index">Index</a>
+    <a href="/chipfiring/5000chips-ballsize50--cubematrix25">Chipfiring</a>
+    
+      </div>
+        <hr>
+        {% block content %}{% endblock %}
+	</div>
+    </body>
+</html>

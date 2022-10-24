@@ -1,0 +1,464 @@
+
+<!doctype html>
+<!doctype html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <head>
+    <title>Chip Firing 3D Visualization</title>
+    
+  <link     rel="shortcut icon"    href="../icos.jpg"  />
+  <link rel="stylesheet" href="/static/main.css" />
+  </head>
+  <body>
+     <div class="w3-container center"> 
+     <!--a href="/index"> <img src="/static/cyborgshaman.jpg" width="150" height="150" cursor="default"   /> </a-->
+
+     <h3>Chip Firing 3D Visualization</h3>
+
+     <div>
+       <a href="..">Home</a>  <br>
+    <a href="50000chips-ballsize50--cubematrix35">/chipfiring/50000chips-ballsize50--cubematrix35</a>
+  <!--   <a href="/visual">Visual</a> -->
+  <!--   <a href="/sandpile">Sandpile</a> -->
+    
+  </div>
+        
+
+
+
+
+  <div id="canvas"></div>
+
+
+  <hr>
+  
+<div id="ballsdemo"></div>
+
+
+<style>
+#canvas {
+    /* background-color: #000; */
+    width: 1000px;
+    height: 700px;
+    /* border: 1px solid black; */
+    margin: 10px;
+    /* padding: 10px; */
+    /*position: static; /* fixed or static */
+    /* top: 10px; */
+    /* left: 10px; */
+}
+
+#ballsdemo {
+    width: 400px;
+    height: 80px;
+    /* padding: 0px; */
+    margin: 10px;
+    /* bottom: 10px; */
+    /* left: 10px; */
+}
+
+
+</style>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/threejs/r76/three.min.js"> -->
+<!-- </script> -->
+<script src="https://emersonjleon.github.io/emersonjleon/threejs/js/three.js">
+</script>
+<script src="https://emersonjleon.github.io/emersonjleon/threejs/js/controls/OrbitControls.js">
+</script>
+
+
+    <!-- <script src="js/three.js"></script> -->
+    <!-- <script src="js/controls/OrbitControls.js"></script> -->
+    <!-- <script src="js/WebGL.js"></script> -->
+
+
+		
+<script>
+
+
+  container = document.getElementById( 'canvas' );
+  document.body.appendChild( container );
+
+  renderer = new THREE.WebGLRenderer();
+  var w = 1000;
+  var h = 700;
+  renderer.setSize( w, h );
+  //renderer.setSize( 400, 330 );
+  container.appendChild( renderer.domElement );
+          
+
+
+
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x2244aa);
+          
+  //var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  //camera.position.z = 5;
+
+	  
+
+
+  
+  //camera
+  var VIEW_ANGLE = 65,
+  ASPECT = w / h,
+       // Aspect ratio// window.innerWidth/window.innerHeight // WIDTH / HEIGHT,
+  NEAR = 2,
+  FAR = 100000;
+  
+  var camera =
+      new THREE.PerspectiveCamera(
+	  VIEW_ANGLE,
+	  ASPECT,
+	  NEAR,
+	  FAR);
+  
+  camera.position.z = 1000;
+
+
+  // orbit controls
+  var controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.panSpeed= 1.8;
+
+  // material
+  var lambertmaterial = new THREE.MeshLambertMaterial({ color: 0x555555 });  
+      
+      
+  // add sphere
+
+  
+  var scale = 1,
+      segments = 24,
+      rings = 16,
+      size= {{ size }} ;  
+  
+  var mySpheres0 = new THREE.Object3D();
+  var mySpheres1 = new THREE.Object3D();
+  var mySpheres2 = new THREE.Object3D();
+  var mySpheres3 = new THREE.Object3D();
+  var mySpheres4 = new THREE.Object3D();
+  var mySpheres5 = new THREE.Object3D();
+  
+  var SphereGeometry = new THREE.SphereGeometry( size, segments, rings );
+  
+  // var sphereGeometry1 = new THREE.SphereGeometry( size, segments, rings );
+  var sphereGeometry0 = SphereGeometry;
+  var sphereGeometry1 = SphereGeometry;  
+  var sphereGeometry2 = SphereGeometry;
+  var sphereGeometry3 = SphereGeometry;
+  var sphereGeometry4 = SphereGeometry;
+  var sphereGeometry5 = SphereGeometry;
+  
+
+  var sphere0 = new THREE.Mesh( );
+  var sphereMaterial0 = new THREE.MeshLambertMaterial( { color: 0x0000ff  } );
+  var sphere0 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
+
+  
+  var sphereMaterial1 = new THREE.MeshLambertMaterial( { color: 0x6699ff  } );
+  var sphere1 = new THREE.Mesh( sphereGeometry1, sphereMaterial1 );
+
+  var mySpheres = new THREE.Object3D();
+
+  // var sphereGeometry2 = new THREE.SphereGeometry( 10, segments, rings );
+  var sphereMaterial2 = new THREE.MeshLambertMaterial( { color: 0xdddd00  } );
+  var sphere2 = new THREE.Mesh( sphereGeometry2, sphereMaterial2 );
+
+    
+    // var sphereGeometry3 = new THREE.SphereGeometry( 10, segments, rings );
+    var sphereMaterial3 = new THREE.MeshLambertMaterial( { color: 0x771177  } );
+    var sphere3 = new THREE.Mesh( sphereGeometry3, sphereMaterial3 );
+
+    
+    // var sphereGeometry4 = new THREE.SphereGeometry( 10, segments, rings );
+    var sphereMaterial4 = new THREE.MeshLambertMaterial( { color: 0x550000  } );
+    var sphere4 = new THREE.Mesh( sphereGeometry4, sphereMaterial4 );
+
+    
+    // var sphereGeometry5 = new THREE.SphereGeometry( 10, segments, rings );
+    var sphereMaterial5 = new THREE.MeshLambertMaterial( { color: 0x090909  } );
+    var sphere5 = new THREE.Mesh( sphereGeometry5, sphereMaterial5 );
+
+  {{ mySpheresCode}}
+
+  // scene.add(mySpheres0);
+  scene.add(mySpheres1);
+  scene.add(mySpheres2);
+  scene.add(mySpheres3);
+  scene.add(mySpheres4);
+  scene.add(mySpheres5);
+      
+      
+      //how to translate things??
+      
+      
+      
+      
+      //add cube in background
+      var geometry = new THREE.BoxGeometry( 400, 400, 10 );
+      var cube = new THREE.Mesh( geometry, lambertmaterial );
+      cube.position.z=-200;
+      //scene.add( cube );
+      
+      
+      
+
+  // LIGHTS
+
+  var ambient = new THREE.AmbientLight(0xeeeedd, 0.7);
+  scene.add(ambient);
+	  
+      // create a point light
+      var pointLight =
+      new THREE.PointLight(0x999999);
+      
+      // set its position
+      pointLight.position.x = 10;
+      pointLight.position.y = 50;
+      pointLight.position.z = 130;
+      
+      // add to the scene
+      scene.add(pointLight);
+      
+      var pointLight2 =
+      new THREE.PointLight(0x888888);
+      
+      // set its position
+      pointLight2.position.x = -50;
+      pointLight2.position.y = -50;
+      pointLight2.position.z = 130;
+      
+      // add to the scene
+      scene.add(pointLight2);
+
+
+  var render = function () {
+      requestAnimationFrame( render );
+      controls.update();
+      
+      //mySpheres.rotation.x += 0.0001;
+      //mySpheres.rotation.y += 0.002;
+      
+      renderer.render(scene, camera);
+  };
+
+  render();
+
+
+
+  function toggleAutorotate()
+  {
+      if ( controls.autoRotate==false ) //play video
+      {
+	  controls.autoRotate=true;
+      }
+      else {
+	  controls.autoRotate=false;
+      }
+	  
+  }
+
+
+
+  
+  //new escene!
+  var renderer2 = new THREE.WebGLRenderer();
+  var w2 = 400;
+  var h2 = 80;
+  renderer2.setSize(w2, h2);
+  //renderer.setSize( 400, 330 );
+  document.getElementById('ballsdemo').appendChild(renderer2.domElement);
+ 
+  var scene2 = new THREE.Scene();
+  scene2.background = new THREE.Color(0x2244aa);
+
+  //lights
+  var ambient2 = new THREE.AmbientLight(0xeeeedd, 0.7);
+  scene2.add(ambient2);
+
+  var pointLight2 =
+      new THREE.PointLight(0x999999);
+      
+  //     // set its position
+  pointLight.position.x = 10;
+  pointLight.position.y = 50;
+  pointLight.position.z = 130;
+      
+  // add to the scene
+  scene2.add(pointLight2);
+      
+
+
+
+
+  
+  var VIEW_ANGLE = 10,
+  ASPECT2 = w2 / h2,
+       // Aspect ratio// window.innerWidth/window.innerHeight // WIDTH / HEIGHT,
+  NEAR2 = 2,
+  FAR2 = 300;
+  var camera2 =  new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT2, NEAR2, FAR2);
+  
+  camera2.position.z = 200;
+
+
+  
+
+  // const left = -150;
+  // const right = 150;  // default canvas size
+  // const topp = 25;
+  // const bottom = -25;  // default canvas size
+  // const near = 10;
+  // const far = -10;
+  // const camera2 = new THREE.OrthographicCamera(left, right, topp, bottom, near, ar);
+
+  
+  //camera2.position.z = 100;
+
+  var ypos=-5;
+  
+  sphere0.position.set( -75.0, ypos, 0 );
+  sphere1.position.set( -45.0, ypos, 0 );
+  sphere2.position.set( -15.0, ypos, 0 );
+  sphere3.position.set( 15.0, ypos, 0 );
+  sphere4.position.set( 45.0, ypos, 0 );
+  sphere5.position.set( 75.0, ypos, 0 );
+
+
+
+
+      sphere0.scale.set(10/size,10/size,10/size);
+      sphere1.scale.set(10/size,10/size,10/size);
+      sphere2.scale.set(10/size,10/size,10/size);
+      sphere3.scale.set(10/size,10/size,10/size);
+      sphere4.scale.set(10/size,10/size,10/size);
+      sphere5.scale.set(10/size,10/size,10/size);
+
+
+  
+  scene2.add(sphere1);
+  scene2.add(sphere2);
+  scene2.add(sphere3);
+  scene2.add(sphere4);
+  scene2.add(sphere5);
+
+  // var render2 = function () {
+  //     requestAnimationFrame( render );
+      //controls.update();
+      
+      //mySpheres.rotation.x += 0.0001;
+      //mySpheres.rotation.y += 0.002;
+      
+      renderer2.render(scene2, camera2);
+  // };
+
+  // render2();
+  
+  //renderer2.render(scene2, camera2);
+
+  function setBallSize(sizevalue) {   // txt == content of form input
+      console.log('resize');
+      console.log(sizevalue);
+      sphere0.scale.set(sizevalue/20,sizevalue/20,sizevalue/20);
+      sphere1.scale.set(sizevalue/20,sizevalue/20,sizevalue/20);
+      sphere2.scale.set(sizevalue/20,sizevalue/20,sizevalue/20);
+      sphere3.scale.set(sizevalue/20,sizevalue/20,sizevalue/20);
+      sphere4.scale.set(sizevalue/20,sizevalue/20,sizevalue/20);
+      sphere5.scale.set(sizevalue/20,sizevalue/20,sizevalue/20);
+      renderer2.render(scene2, camera2);
+
+   }
+
+
+  function setMaxDistance(maxdist) {   // txt == content of form input
+      console.log('max distance');
+      console.log(maxdist);
+      camera.far=maxdist;
+  }
+
+  function displayOnly() {   // txt == content of form input
+      console.log('display only');
+
+      {% for value in range(6) %}
+      var d{{value}}checked = document.getElementById("d{{value}}").checked;
+      if (d{{value}}checked) {
+	  scene2.add(sphere{{value}});
+      	  scene.add(mySpheres{{value}});  
+      } else {
+      	  scene2.remove(sphere{{value}});
+      	  scene.remove(mySpheres{{value}});  
+      }
+       {% endfor %}
+      
+      // scene2.remove(sphere1);
+      // scene2.remove(sphere2);
+      // scene2.remove(sphere3);
+      // scene2.add(sphere4);
+      // scene2.add(sphere5);
+      renderer2.render(scene2, camera2);
+
+      // scene2.add(sphere0);
+      // scene2.add(sphere1);
+      // scene2.add(sphere2);
+      // scene2.add(sphere3);
+      // scene2.add(sphere4);
+      // scene2.add(sphere5);
+      //
+      // scene.remove(mySpheres2);
+      // scene.remove(mySpheres3);
+      // scene.add(mySpheres4);
+      // scene.add(mySpheres5);
+   
+
+
+
+
+      
+  }
+
+
+  
+</script>
+
+
+
+
+    <button id='button' class="button" onClick="toggleAutorotate() "> Toggle Autorotate </button>
+
+    <!-- <form name="ballsize" action="javascript:setBallSize(bsize.value)">   -->
+    <!--   <label for="bsize">size of spheres</label> -->
+    <!--   <input type="number" id="bsize" name="bsize"> -->
+    <!--   <input type="submit"> -->
+    <!-- </form> -->
+
+    <!-- <form name="maxdist" action="javascript:setMaxDistance(maxdistance.value)"> -->
+    <!--   <label for="maxdistance">maximal distance</label> -->
+    <!--   <input type="number" id="maxdistance" name="maxdistance"> -->
+    <!--   <input type="submit"> -->
+    <!-- </form> -->
+
+
+    <form class="old" action="javascript:displayOnly(d0.value, d1.value, d2.value, d3.value, d4.value, d5.value)">
+      <div class="alignleft">
+
+	<p>
+      {% for value in range(6) %}
+        <!-- <input type='hidden' id="d{{value}}" value='False' name='d{{value}}'/> -->
+        <input type="checkbox" id="d{{value}}" name="d{{value }}" value="True"/>
+	<label for="d{{value }}"> <b>{{value}}</b>       </label> 
+      {% endfor %}
+	<input type="submit" text value="display" />
+      </p>
+      
+
+    </div>
+
+  </form>
+
+
+    
+
+  </body>
+</html>
