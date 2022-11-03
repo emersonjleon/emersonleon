@@ -185,10 +185,19 @@ def parseChipstring(chipstring):
     # displaynumbers= [str(number) in list(displaystr) for number in range(6)]
     return chips, ballsize,cubematrix
 
-
-
-
-
+@app.route("/chipfiring", methods=("GET", "POST"))
+def chipfiringredirect():
+    if request.method == "POST":
+        chips = request.form["chips"]
+        ballsize = request.form["ballsize"]
+        matrixsize = request.form["matrixsize"]
+    else:
+        chips=5000
+        ballsize=50
+        matrixsize=35
+    chipstring=f"{chips}chips-ballsize{ballsize}--cubematrix{matrixsize}"
+    return redirect(url_for('chipfiringvisualize', chipstring=chipstring))
+        
 @app.route("/chipfiring/<string:chipstring>", methods=("GET", "POST"))
 def chipfiringvisualize(chipstring):
     chips, ballsize, cubematrix= parseChipstring(chipstring)

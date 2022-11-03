@@ -7,33 +7,12 @@
   <head>
     <title>Chip Firing 3D Visualization</title>
     
-  <link     rel="shortcut icon"    href="../icos.jpg"  />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='icos.png') }}"  />
+    
   <link rel="stylesheet" href="/static/main.css" />
   </head>
-  <body>
-     <div class="w3-container center"> 
-     <!--a href="/index"> <img src="/static/cyborgshaman.jpg" width="150" height="150" cursor="default"   /> </a-->
-
-     <h3>Chip Firing 3D Visualization</h3>
-
-     <div>
-       <a href="..">Home</a>  <br>
-    <a href="50000chips-ballsize50--cubematrix35">/chipfiring/50000chips-ballsize50--cubematrix35</a>
-  <!--   <a href="/visual">Visual</a> -->
-  <!--   <a href="/sandpile">Sandpile</a> -->
-    
-  </div>
-        
-
-
-
-
-  <div id="canvas"></div>
-
-
-  <hr>
-  
-<div id="ballsdemo"></div>
 
 
 <style>
@@ -60,6 +39,97 @@
 
 
 </style>
+
+
+
+  <body>
+     <div class="w3-container center"> 
+     <!--a href="/index"> <img src="/static/cyborgshaman.jpg" width="150" height="150" cursor="default"   /> </a-->
+
+     <h3>Chip Firing 3D Visualization</h3>
+
+        
+
+
+
+<div>
+  <div id="canvas"></div>
+
+
+  <hr>
+  
+  <div id="ballsdemo"></div>
+  <form class="old" action="javascript:displayOnly(d0.value, d1.value, d2.value, d3.value, d4.value, d5.value)">
+      <div class="alignleft">
+
+	<p>
+      {% for value in range(6) %}
+        <!-- <input type='hidden' id="d{{value}}" value='False' name='d{{value}}'/> -->
+        <input type="checkbox" id="d{{value}}" name="d{{value }}" value="True"/>
+	<label for="d{{value }}"> <b>{{value}}</b>       </label> 
+      {% endfor %}
+	<input type="submit" text value="display" />
+      </p>
+    </form>   
+
+    </div>
+
+ 
+</div>
+
+
+
+
+    <!-- <form name="ballsize" action="javascript:setBallSize(bsize.value)">   -->
+    <!--   <label for="bsize">size of spheres</label> -->
+    <!--   <input type="number" id="bsize" name="bsize"> -->
+    <!--   <input type="submit"> -->
+    <!-- </form> -->
+
+    <!-- <form name="maxdist" action="javascript:setMaxDistance(maxdistance.value)"> -->
+    <!--   <label for="maxdistance">maximal distance</label> -->
+    <!--   <input type="number" id="maxdistance" name="maxdistance"> -->
+    <!--   <input type="submit"> -->
+    <!-- </form> -->
+
+<div>
+    <form class="old" action="/chipfiring" method="post">
+      <div class="alignleft">
+
+	<p>
+      
+	  Number of chips 
+	  	  <input type="number"  value="5000" name="chips" style='width:7em' required   /> <br>
+	  Ball size 
+	  	  <input type="number"  value="50" name="ballsize" style='width:3em' required   />
+		  Matrix size 
+	  	  <input type="number"  value="25" name="matrixsize" style='width:3em' required   /> 
+
+	<input type="submit" text value="display" />
+      </p>
+      
+    <button id='button' class="button" onClick="toggleAutorotate() "> Toggle Autorotate </button>
+
+    </div>
+
+  </form>
+
+
+     
+
+     <div>
+       Visualization by <a href="..">Emerson León</a>  <br>
+    <!-- <a href="50000chips-ballsize50--cubematrix35">/chipfiring/50000chips-ballsize50--cubematrix35</a> -->
+  <!--   <a href="/visual">Visual</a> -->
+  <!--   <a href="/sandpile">Sandpile</a> -->
+    
+  </div>
+</div>
+
+    
+
+  </body>
+
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/threejs/r76/three.min.js"> -->
 <!-- </script> -->
@@ -422,43 +492,4 @@
   
 </script>
 
-
-
-
-    <button id='button' class="button" onClick="toggleAutorotate() "> Toggle Autorotate </button>
-
-    <!-- <form name="ballsize" action="javascript:setBallSize(bsize.value)">   -->
-    <!--   <label for="bsize">size of spheres</label> -->
-    <!--   <input type="number" id="bsize" name="bsize"> -->
-    <!--   <input type="submit"> -->
-    <!-- </form> -->
-
-    <!-- <form name="maxdist" action="javascript:setMaxDistance(maxdistance.value)"> -->
-    <!--   <label for="maxdistance">maximal distance</label> -->
-    <!--   <input type="number" id="maxdistance" name="maxdistance"> -->
-    <!--   <input type="submit"> -->
-    <!-- </form> -->
-
-
-    <form class="old" action="javascript:displayOnly(d0.value, d1.value, d2.value, d3.value, d4.value, d5.value)">
-      <div class="alignleft">
-
-	<p>
-      {% for value in range(6) %}
-        <!-- <input type='hidden' id="d{{value}}" value='False' name='d{{value}}'/> -->
-        <input type="checkbox" id="d{{value}}" name="d{{value }}" value="True"/>
-	<label for="d{{value }}"> <b>{{value}}</b>       </label> 
-      {% endfor %}
-	<input type="submit" text value="display" />
-      </p>
-      
-
-    </div>
-
-  </form>
-
-
-    
-
-  </body>
 </html>
