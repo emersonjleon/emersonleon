@@ -113,7 +113,12 @@ def has_no_empty_params(rule):
 @app.route("/home", methods=("GET", "POST"))
 def homeapp():
     return render_template("home.html")
-    
+
+
+@app.route("/math", methods=("GET", "POST"))
+def mathpage():
+    return render_template("math.html")
+
 
 
 @app.route("/index")
@@ -198,4 +203,3 @@ def chipfiringvisualize(chipstring):
 #########################
 if __name__ == '__main__':
     app.run()
-
