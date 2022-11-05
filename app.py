@@ -119,6 +119,10 @@ def homeapp():
 def mathpage():
     return render_template("math.html")
 
+@app.route("/visual", methods=("GET", "POST"))
+def visualpage():
+    return render_template("visualization.html")
+
 
 
 @app.route("/index")
