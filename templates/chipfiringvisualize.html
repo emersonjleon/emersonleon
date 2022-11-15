@@ -99,11 +99,18 @@
 	<p>
       
 	  Number of chips 
-	  	  <input type="number"  value="5000" name="chips" style='width:7em' required   /> <br>
-	  Ball size 
-	  	  <input type="number"  value="50" name="ballsize" style='width:3em' required   />
+	  	  <input type="number"  value="{{chips}}" name="chips" style='width:7em' required   /> <br>
+
+		  <input type="radio" id="figureball" name="figure" value="ball">
+		  <label for="ball">Ball</label>
+
+		  <input type="radio" id="figurecube" name="figure" value="cube">
+		  <label for="cube">Cube</label><br>
+
+		  size 
+	  	  <input type="number"  value="{{size}}" name="ballsize" style='width:3em' required   />
 		  Matrix size 
-	  	  <input type="number"  value="25" name="matrixsize" style='width:3em' required   /> 
+	  	  <input type="number"  value="{{matrixsize}}" name="matrixsize" style='width:3em' required   /> 
 
 	<input type="submit" text value="display" />
       </p>
@@ -211,16 +218,28 @@
   var mySpheres3 = new THREE.Object3D();
   var mySpheres4 = new THREE.Object3D();
   var mySpheres5 = new THREE.Object3D();
-  
+
+
+  //sphere or cube???
   var SphereGeometry = new THREE.SphereGeometry( size, segments, rings );
+  var CubeGeometry = new THREE.BoxGeometry( 2*size, 2*size, 2*size );
+  //var SphereGeometry = new THREE.BoxGeometry( 2*size, 2*size, 2*size );
+  if ( '{{ figure }}' =='ball'){
+      var figureGeometry=SphereGeometry;
+      document.getElementById('figureball').checked=true;
+  } else {
+      var figureGeometry=CubeGeometry;
+      document.getElementById('figurecube').checked=true;
+
+  }
   
   // var sphereGeometry1 = new THREE.SphereGeometry( size, segments, rings );
-  var sphereGeometry0 = SphereGeometry;
-  var sphereGeometry1 = SphereGeometry;  
-  var sphereGeometry2 = SphereGeometry;
-  var sphereGeometry3 = SphereGeometry;
-  var sphereGeometry4 = SphereGeometry;
-  var sphereGeometry5 = SphereGeometry;
+  var sphereGeometry0 = figureGeometry;
+  var sphereGeometry1 = figureGeometry;  
+  var sphereGeometry2 = figureGeometry;
+  var sphereGeometry3 = figureGeometry;
+  var sphereGeometry4 = figureGeometry;
+  var sphereGeometry5 = figureGeometry;
   
 
   var sphere0 = new THREE.Mesh( );

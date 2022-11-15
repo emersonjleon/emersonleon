@@ -181,13 +181,14 @@ def parseChipstring(chipstring):
     # "example chipstring: '10000chips-size30--display12345'  "
     chipposition = chipstring.find("chip")
     chips=int(chipstring[0:chipposition])
-    epos = chipstring.find("e")
+    epos = chipstring.find("size")
+    figure=chipstring[chipposition+6:epos]
     linespos = chipstring.find("--")	             
-    ballsize=int(chipstring[epos+1:linespos])
+    ballsize=int(chipstring[epos+4:linespos])
     xposition = chipstring.find("x")
     cubematrix=int(chipstring[xposition+1:])
     # displaynumbers= [str(number) in list(displaystr) for number in range(6)]
-    return chips, ballsize,cubematrix
+    return chips, ballsize,cubematrix,figure
 
 @app.route("/chipfiring", methods=("GET", "POST"))
 def chipfiringredirect():
@@ -195,19 +196,26 @@ def chipfiringredirect():
         chips = request.form["chips"]
         ballsize = request.form["ballsize"]
         matrixsize = request.form["matrixsize"]
+        figure = request.form["figure"]
+        # if is_cube==True:
+        #     figure='cube'
+        # else:
+        #     figure='ball'
     else:
         chips=5000
         ballsize=50
         matrixsize=35
-    chipstring=f"{chips}chips-ballsize{ballsize}--cubematrix{matrixsize}"
+        figure='ball'
+    chipstring=f"{chips}chips-{figure}size{ballsize}--cubematrix{matrixsize}"
     return redirect(url_for('chipfiringvisualize', chipstring=chipstring))
         
 @app.route("/chipfiring/<string:chipstring>", methods=("GET", "POST"))
 def chipfiringvisualize(chipstring):
-    chips, ballsize, cubematrix= parseChipstring(chipstring)
+    chips, ballsize, cubematrix, figure= parseChipstring(chipstring)
     spheresText=chipfiringVisual2( chipfiring3d(int(chips),size=cubematrix) )    
     return render_template("chipfiringvisualize.html", mySpheresCode=spheresText, 
-                           size=ballsize)
+                           size=ballsize, chips=chips, matrixsize=cubematrix,
+                           figure=figure)
 
 
 
