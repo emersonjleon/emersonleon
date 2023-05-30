@@ -1,0 +1,353 @@
+
+<!doctype html>
+<!doctype html>
+<html>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Finite fields and Fixed Points</title>
+    
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='icos.png') }}"  />
+    
+  <link rel="stylesheet" href="/static/main.css" />
+  </head>
+
+
+<style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* height: 100vh; */
+      margin: 0;
+      background: #f1f1f1;
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 1000px;
+      height: 600px;
+      background: white;
+      border: 1px solid black;
+    }
+
+    .canvas-container canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .bullet {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      transition: transform 0.2s, border 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+
+    .bullet:hover {
+      transform: scale(1.5);
+      border: 2px solid black;
+    }
+
+    .bullet-text {
+      position: absolute;
+      top: -20px;
+      left: 15px;
+      font-size: 12px;
+      white-space: nowrap;
+      color: black;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s linear 0.2s, opacity 0.2s;
+    }
+
+    .bullet:hover + .bullet-text {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+
+
+
+</style>
+
+
+
+  <body>
+     <div class="w3-container center"> 
+     <!--a href="/index"> <img src="/static/cyborgshaman.jpg" width="150" height="150" cursor="default"   /> </a-->
+
+     <h2>Finite Fields and Fixed Points of functions going up and down</h2>
+
+        
+
+
+
+<div>
+  <hr>
+ 
+</div>
+
+
+
+
+
+    <!-- <form name="ballsize" action="javascript:setBallSize(bsize.value)">   -->
+    <!--   <label for="bsize">size of spheres</label> -->
+    <!--   <input type="number" id="bsize" name="bsize"> -->
+    <!--   <input type="submit"> -->
+    <!-- </form> -->
+
+    <!-- <form name="maxdist" action="javascript:setMaxDistance(maxdistance.value)"> -->
+    <!--   <label for="maxdistance">maximal distance</label> -->
+    <!--   <input type="number" id="maxdistance" name="maxdistance"> -->
+    <!--   <input type="submit"> -->
+    <!-- </form> -->
+
+
+<div class="w3-col l12" style="text-align: center">
+  <div class="w3-row">
+    <div class="w3-col m5 s12" >
+    <div  class="alignleft">
+	<p>
+	  We consider piecewise linear functions f(x) going up and down p times. The fixed points of f&#8319; are in bijection with elements of the finite field with p&#8319; elements, where orbits under f are in correspondence with  irreducible polynomials over the field.
+	</p>
+	<p>
+	  This is a joint work of Julián Pulido y Emerson León. More details of these bijections can be found <a href="https://arxiv.org/abs/2111.13745">here</a>.
+	</p>
+    </div>
+
+	
+    </div>
+    
+    
+    
+    <div class="w3-col m4 s12 ">
+    
+      <form class="old" action="/ff" method="post">
+      <p>
+
+	p 
+	<input type="number"  value="{{p}}" name="p" style='width:3em' required   />
+	n 
+	<input type="number"  value="{{n}}" name="n" style='width:3em' required   />
+	<input type="submit" text value="display" />
+      </p>
+      <p>
+
+	Up down pattern<br>
+	<input type="radio" id="updown" name="updown" value="alternating" checked onclick="javascript:displaycustom();">
+	<label for="alternating">Continuous (alternating)</label><br>
+	
+	<input type="radio" id="custom" name="updown" value="custom" onclick="javascript:displaycustom();">
+	<label for="custompattern">Custom design</label>
+	
+	<div id='customdiv'>
+	    
+	  <input type="text"  value="{{udpattern}}" name="chips" style='width:7em'  /> 
+	  (has to be of length p)
+	</div>
+	
+	
+      </p>
+    
+      </form>
+  
+    </div>
+    
+    </div>
+    
+  </div>
+</div>
+
+     
+<!-- ########################################## -->
+  <div class="canvas-container">
+    <canvas id="myCanvas" width="1000" height="600"></canvas>
+    <div class="bullets-container"></div>
+
+
+  </div>
+</div>
+<div id="output" >
+  
+</div>
+<div  class="end">
+       <p>
+	 <a   href="{{ url_for('static', filename=filename) }}" > picture </a>
+       </p>
+       
+       <p>
+	 Visualization by <a href="..">Emerson León</a>  <br>
+       </p>
+    
+  </div>
+</div>
+
+    
+
+  </body>
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/threejs/r76/three.min.js"> -->
+<!-- </script> -->
+
+
+<!-- <script src="https://emersonjleon.github.io/emersonjleon/threejs/js/three.js"> -->
+<!-- </script> -->
+<!-- <script src="https://emersonjleon.github.io/emersonjleon/threejs/js/controls/OrbitControls.js"> -->
+<!-- </script> -->
+
+
+    <!-- <script src="js/three.js"></script> -->
+    <!-- <script src="js/controls/OrbitControls.js"></script> -->
+    <!-- <script src="js/WebGL.js"></script> -->
+
+
+		
+<script>
+  function displaycustom() {
+      var customchecked = document.getElementById("custom").checked;
+      var customdiv = document.getElementById("customdiv");
+      if (customchecked) {
+	  customdiv.style.display = 'block';
+      } else {
+	  customdiv.style.display = 'none';
+      }
+  }
+
+  displaycustom();
+
+  
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+// 
+ 
+function generateColorList(number) {
+  const hueStep = 360 / number;
+  const colorList = [];
+
+  for (let i = 0; i < number; i++) {
+    const hue = i * hueStep;
+    const color = `hsl(${hue}, 100%, 50%)`;
+    colorList.push(color);
+  }
+
+  return colorList;
+}
+
+  // Usage example
+  const colors = generateColorList({{jslen}});
+
+  const allcoordinates = {{ allcoordinates}};
+  const texts = {{texts|safe}};
+  
+  var output = document.getElementById("output");
+  
+  
+    
+const circles = [];
+
+for (let colorIndex = 0; colorIndex < colors.length; colorIndex++) {
+    const color = colors[colorIndex];
+    const coordinates = allcoordinates[colorIndex];
+    const cycletexts = texts[colorIndex];
+    // output.innerText += texts;
+    // output.innerText += "\n";
+    
+
+    for (let i = 0; i < coordinates.length; i++) {
+	// for (let i = 0; i < cycle.xcoords.length; i++) {
+	const startCoord = coordinates[i];
+	// const startCoord = {cycle[xcoords][i], cycle[ycoords][i]};
+	// const startX = startCoord.x * canvas.width;
+	// const startY = (1 - startCoord.y) * canvas.height;
+	const startX = startCoord[0] * canvas.width;
+	const startY = (1 - startCoord[1]) * canvas.height;
+	
+	const endCoord = coordinates[ (i + 1) % coordinates.length ];
+	// const endCoord = {cycle[xcoords][(i + 1) % cycle[xcoords].length],
+	// 		      cycle.[ycoords][(i + 1) % cycle[xcoords].length]};
+	const endX = endCoord[0] * canvas.width;
+	const endY = (1 - endCoord[1]) * canvas.height;
+	
+	ctx.beginPath();
+	ctx.moveTo(startX, startY);
+	ctx.lineTo(endX, endY);
+	ctx.strokeStyle = color;
+	ctx.lineWidth = 2;
+	ctx.stroke();
+	
+      
+	const circle = {
+	    x: startCoord[0],
+	    y: startCoord[1],
+	    color,
+	    text: cycletexts[i]
+	};
+
+	circles.push(circle);
+    }
+}
+
+circles.forEach(circle => {
+    const x = circle.x * canvas.width;
+    const y = (1 - circle.y) * canvas.height;
+    const radius = 5;
+    
+    const bullet = document.createElement('div');
+    bullet.classList.add('bullet');
+    bullet.style.backgroundColor = circle.color;
+    bullet.style.top = `${y - radius}px`;
+    bullet.style.left = `${x - radius}px`;
+    
+    const bulletText = document.createElement('div');
+    bulletText.classList.add('bullet-text');
+    // bulletText.innerText = `(${circle.x.toFixed(2)}, ${circle.y.toFixed(2)})`;
+    // if ((circle.x-circle.y)*(circle.x-circle.y) <0.0001){
+    //     bulletText.innerText = `X${circle.i} = ${circle.x}`;
+    // } else {
+    //     bulletText.innerText = `f(${circle.x.toFixed(4)}) =${circle.y.toFixed(4)}`;
+    // }
+    bulletText.innerText = circle.text; //
+    bullet.style.top = `${y - radius - 3}px`;
+    bullet.style.top = `${y - radius - 3}px`;
+    bulletText.style.left = `${x - bulletText.offsetWidth / 2}px`;
+    bulletText.style.top = `${y - bulletText.offsetWidth }px`;
+
+    const bulletsContainer = document.querySelector('.bullets-container');
+    bulletsContainer.appendChild(bullet);
+    bulletsContainer.appendChild(bulletText);
+    
+    // Add event listener for hover
+    bullet.addEventListener('mouseover', () => {
+	bullet.style.transform = 'scale(1.5)';
+	bullet.style.border = '2px solid black';
+	bullet.style.top = `${y - radius - 3}px`;
+	bullet.style.left = `${x - radius - 3}px`;
+	bulletText.style.visibility = 'visible';
+	bulletText.style.opacity = '1';
+    });
+
+    bullet.addEventListener('mouseout', () => {
+	bullet.style.transform = 'scale(1)';
+	bullet.style.border = 'none';
+	bullet.style.top = `${y - radius}px`;
+	bullet.style.left = `${x - radius}px`;
+	bulletText.style.visibility = 'hidden';
+	bulletText.style.opacity = '0';
+    });
+});
+
+
+  
+</script>
+
+</html>

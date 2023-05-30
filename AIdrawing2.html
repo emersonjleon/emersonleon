@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles for the canvas and bullets */
+    #canvas {
+      border: 1px solid black;
+    }
+
+    .bullet {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .bullet:hover {
+      transform: scale(1.5);
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+  <label for="color-number">Number of Colors:</label>
+  <input type="number" id="color-number" min="1" max="100" value="20">
+  <button id="submit-btn">Submit</button>
+  <br>
+  <canvas id="canvas" width="500" height="500"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const submitBtn = document.getElementById('submit-btn');
+
+    submitBtn.addEventListener('click', () => {
+      const colorNumberInput = document.getElementById('color-number');
+      const colorNumber = parseInt(colorNumberInput.value, 10);
+
+      if (isNaN(colorNumber) || colorNumber < 1 || colorNumber > 100) {
+        alert('Please enter a valid number between 1 and 100.');
+        return;
+      }
+
+      redrawCanvas(colorNumber);
+    });
+
+
+function redrawCanvas(number) {
+  // Clear canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const colors = generateColorList(number);
+  const circles = [];
+
+  // Generate circles and lines
+  for (let colorIndex = 0; colorIndex < colors.length; colorIndex++) {
+    const color = colors[colorIndex];
+    const coordinates = [];
+
+    for (let i = 0; i < 10; i++) {
+      const x = Math.random();
+      const y = Math.random();
+      coordinates.push({ x, y });
+    }
+
+    for (let i = 0; i < coordinates.length; i++) {
+      const startCoord = coordinates[i];
+      const startX = startCoord.x * canvas.width;
+      const startY = (1 - startCoord.y) * canvas.height;
+
+      const endCoord = coordinates[(i + 1) % coordinates.length];
+      const endX = endCoord.x * canvas.width;
+      const endY = (1 - endCoord.y) * canvas.height;
+
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(endX, endY);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      const circle = {
+        x: startCoord.x,
+        y: startCoord.y,
+        color
+      };
+
+      circles.push(circle);
+    }
+  }
+
+  // Remove existing bullets
+  const existingBullets = document.querySelectorAll('.bullet');
+  existingBullets.forEach(bullet => bullet.remove());
+
+  // Draw circle bullets
+  circles.forEach(circle => {
+    const x = circle.x * canvas.width;
+    const y = (1 - circle.y) * canvas.height;
+    const radius = 5;
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = circle.color;
+    ctx.fill();
+
+    const bullet = document.createElement('div');
+    bullet.classList.add('bullet');
+    bullet.style.backgroundColor = circle.color;
+    bullet.style.top = `${y - radius}px`;
+    bullet.style.left = `${x - radius}px`;
+
+    document.body.appendChild(bullet);
+
+    // Add event listener for hover
+    bullet.addEventListener('mouseover', () => {
+      bullet.style.transform = 'scale(1.5)';
+      bullet.style.border = '2px solid black';
+    });
+
+    bullet.addEventListener('mouseout', () => {
+      bullet.style.transform = 'scale(1)';
+      bullet.style.border = 'none';
+    });
+  });
+}
+
+
+    
+
+    function generateColorList(number) {
+      const hueStep = 360 / number;
+      const colorList = [];
+
+      for (let i = 0; i < number; i++) {
+        const hue = i * hueStep;
+        const color = `hsl(${hue}, 80%, 40%)`;
+        colorList.push(color);
+      }
+
+      return colorList;
+    }
+  </script>
+</body>
+</html>

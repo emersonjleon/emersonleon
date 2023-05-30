@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chip Firing Visualization</title>
+  <style>
+    /* CSS styles for grid visualization */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(141, 3px); /* Adjust the number of columns as needed */
+      grid-template-rows: repeat(141, 3px); /* Adjust the number of rows as needed */
+      grid-gap: 0px; /* Adjust the gap between grid cells as needed */
+    }
+
+    .cell {
+      background-color: #ccc; /* Default color for cells */
+    }
+  </style>
+</head>
+<body>
+  <h1>Chip Firing Visualization</h1>
+  <p>Enter the number of chips:</p>
+  <input type="number" id="chipsInput" min="1" value="30000">
+  <button onclick="startGame()">Start</button>
+  <div id="gridContainer"></div>
+
+  <script>
+    // JavaScript code for chip firing visualization
+    function startGame() {
+      var chips = parseInt(document.getElementById("chipsInput").value);
+      var gridSize = 141; // Adjust the grid size as needed
+
+      // Create the grid
+      var gridContainer = document.getElementById("gridContainer");
+      gridContainer.innerHTML = "";
+      gridContainer.className = "grid";
+
+      // Initialize the grid cells with chips on the center
+      var cells = [];
+      var center = Math.floor(gridSize / 2);
+      for (var i = 0; i < gridSize; i++) {
+        for (var j = 0; j < gridSize; j++) {
+          var cell = document.createElement("div");
+          cell.className = "cell";
+          if (i === center && j === center) {
+            cell.dataset.chips = chips; // Set the initial number of chips on the center cell
+          } else {
+            cell.dataset.chips = 0; // Set zero chips on other cells initially
+          }
+          cells.push(cell);
+          gridContainer.appendChild(cell);
+        }
+      }
+
+      // Perform chip-firing game
+      var activeCells = [center * gridSize + center]; // Initialize with the center cell
+
+      while (activeCells.length > 0) {
+        var nextActiveCells = [];
+
+        activeCells.forEach(function (cellIndex) {
+          var cell = cells[cellIndex];
+          var chipsOnCell = parseInt(cell.dataset.chips);
+
+          if (chipsOnCell >= 4) {
+            var neighbors = getNeighbors(cellIndex, gridSize);
+            var chipsToSend = Math.floor(chipsOnCell / neighbors.length);
+
+            neighbors.forEach(function (neighbor) {
+              cells[neighbor].dataset.chips = parseInt(cells[neighbor].dataset.chips) + chipsToSend;
+              if (parseInt(cells[neighbor].dataset.chips) >= 4 && !nextActiveCells.includes(neighbor)) {
+                nextActiveCells.push(neighbor);
+              }
+            });
+
+            cell.dataset.chips = chipsOnCell % neighbors.length;
+          }
+        });
+
+        activeCells = nextActiveCells;
+      }
+
+      // Color code the cells based on the number of chips
+      cells.forEach(function (cell) {
+        var chipsOnCell = parseInt(cell.dataset.chips);
+        var color;
+        if (chipsOnCell === 0) {
+          color = "blue"; // Empty cell color
+        } else if (chipsOnCell === 1) {
+          color = "green"; // Color for 1 chip
+        } else if (chipsOnCell === 2) {
+          color = "yellow"; // Color for 2 chips
+        } else if (chipsOnCell === 3) {
+          color = "red"; // Color for 3 chips
+        } else {
+          color = "orange"; // Color for 4 or more chips
+        }
+        cell.style.backgroundColor = color;
+      });
+    }
+
+    // Helper function to get the indices of the neighboring cells
+    function getNeighbors(index, gridSize) {
+      var neighbors = [];
+
+      var top = index - gridSize;
+      var bottom = index + gridSize;
+      var left = index - 1;
+      var right = index + 1;
+
+      if (top >= 0) neighbors.push(top);
+      if (bottom < gridSize * gridSize) neighbors.push(bottom);
+      if (index % gridSize !== 0) neighbors.push(left);
+      if ((index + 1) % gridSize !== 0) neighbors.push(right);
+
+      return neighbors;
+    }
+  </script>
+</body>
+</html>

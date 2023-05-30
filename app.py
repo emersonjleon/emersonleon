@@ -7,9 +7,15 @@ from datetime import datetime, date
 
 from visual import threejsSpheresText, chipfiringVisual, chipfiringVisual2
 from threedfiring import chipfiring3d
+import time
 
 #from dotenv import load_dotenv, find_dotenv
 #load_dotenv(find_dotenv())
+import sys
+sys.path.append("./ffields")
+
+from ffields import plotgcycles
+
 
 app = Flask(__name__)
 
@@ -47,8 +53,47 @@ def guardarSesionActual(name='*unsaved '):
 
 
 
+@app.route("/ff", methods=("GET", "POST"))
+def ff():
+    def UD(bool):
+        if bool:
+            return 'U'
+        else:
+            return 'D'
+    def UDpattern(indexlist):
+        udlist=[UD(i in indexlist) for i in range(p)]
+        return "".join(udlist)
+    if request.method == "POST":
+        p = int(request.form["p"])
+        n = int(request.form["n"])
+        updown = request.form["updown"]
+        if updown == "alternating":
+            UDpattern= "".join([UD(i%2 == 0) for i in range(p)])
+        else:
+            UDpattern= request.form["UDpattern"]
+        I=[i for i in range(p) if UDpattern[i]=="U"]
+        filename=f"ffplots/p{p}n{n}I{'-'.join([str(val) for val in I])}.png"
+        #plotgcycles.saveplot(p,n,I,f"./static/{filename}")
+        time.sleep(1)
+        # allcoordinates={0:[ [0,0], [0.5,0.5] ], 1:[[0.66666,0.666666]], 2:[[0.2,0.2], [0.2 , 0.7], [0.7,0.7], [0.7, 0.2]]}
+        allcoordinates, texts= plotgcycles.createJSplot(p,n, I)
+        return render_template("ffields.html",
+                               filename=filename,
+                               p=p, n=n, udpattern=UDpattern,
+                               allcoordinates=allcoordinates,
+                               texts=texts,
+                               jslen=len(allcoordinates))
+    p=2
+    n=3
+    I=[0]
+    filename=f"ffplots/p{p}n{n}I{'-'.join([str(val) for val in I])}.png"
+    #plotgcycles.saveplot(p,n,I,f"./static/{filename}")
+    time.sleep(1)
+    return render_template("ffields.html",
+                           filename=filename,
+                           p=p, n=n, udpattern=UDpattern(I))
     
-
+    
 # @app.route("/sesiones", methods=("GET", "POST"))
 # def editar_sesiones():
 #     global historias
@@ -122,6 +167,7 @@ def mathpage():
 @app.route("/visual", methods=("GET", "POST"))
 def visualpage():
     return render_template("visualization.html")
+
 
 
 
