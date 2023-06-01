@@ -10,10 +10,11 @@ import time
 #from dotenv import load_dotenv, find_dotenv
 #load_dotenv(find_dotenv())
 import sys
-sys.path.append("./ffields")
+#sys.path.append("./ffields")
+sys.path.append("./emersonjleon/ffields")
 from ffields import plotgcycles
-
-sys.path.append("./chipfiring")
+#sys.path.append("./chipfiring")
+sys.path.append("./emersonjleon/chipfiring")
 from chipfiring.visual import threejsSpheresText, chipfiringVisual, chipfiringVisual2
 from chipfiring.threedfiring import chipfiring3d
 
