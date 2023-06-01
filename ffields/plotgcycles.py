@@ -17,32 +17,12 @@ def plotgIpn(ax, p,n,I,pcolor="black",lwidth=0.5):
                 linewidth=lwidth)
 
         
-def createJSplot(p,n,I):
-    """to be used in interactive plot from app.py, templates/ffields.html"""
-    final={}
-    texts=[]
-    count=0
-    for cycle in ff.pcycles(p,n):
-        xcoords=[]
-        ycoords=[]
-        cycletexts=[]
-        invcycle=ff.piIinvcycle(cycle,p,n,I)
-        print("#########  ",cycle)
-        #print(invcycle)
-        for i in invcycle:
-            xi=ff.xiI(i,p,n,I)
-            xcoords.extend([xi,xi])
-            ycoords.extend([xi,ff.gI(xi,I,p)]) #gI(xi)=x{inext}
-            cycletexts.extend([f"X{i}={xi}", f"f(X{i}) = {ff.gI(xi,I,p)}"]) #gI(xi)=x{inext}
-        # xcoords.append(xcoords[0])
-        # ycoords.append(ycoords[0])
-        # cycletexts.append
-        # final[count]={"invcycle":invcycle, "xcoords":xcoords, "ycoords":ycoords}
-
-        final[count]=[ [xcoords[i], ycoords[i]] for i in range(len(xcoords))]
-        texts.append(cycletexts)
-        count+=1
-    return final, texts
+def createpnIplot(p,n,I):
+    fig, ax = plt.subplots()# Create a figure and an axes.
+    plt.rcParams["figure.figsize"] = (10,6)## Size of picture!!
+    ax.plot([0,1],[0,1],color='k')
+    plotgIpn(ax, p,1,I,pcolor="black",lwidth=0.8)
+    plotgIpn(ax, p,n,I,pcolor="black")
 
 
 def createfullpnIplot(p,n,I):
@@ -70,9 +50,38 @@ def createfullpnIplot(p,n,I):
         #ax.legend() # Add a legend.
 
 def saveplot(p,n,I,filename):
+    createpnIplot(p,n,I)
+    plt.savefig(filename)#'tight', transparent=True)
+
+def savefullplot(p,n,I,filename):
     createfullpnIplot(p,n,I)
     plt.savefig(filename)#'tight', transparent=True)
 
+    
+def createJSplot(p,n,I):
+    """to be used in interactive plot from app.py, templates/ffields.html"""
+    final={}
+    texts=[]
+    count=0
+    for cycle in ff.pcycles(p,n):
+        xcoords=[]
+        ycoords=[]
+        cycletexts=[]
+        invcycle=ff.piIinvcycle(cycle,p,n,I)
+        #print("#########  ",cycle)
+        #print(invcycle)
+        for i in invcycle:
+            xi=ff.xiI(i,p,n,I)
+            xcoords.extend([xi,xi])
+            ycoords.extend([xi,ff.gI(xi,I,p)]) #gI(xi)=x{inext}
+            cycletexts.extend([f"X{i}={xi}", f"f(X{i}) = {ff.gI(xi,I,p)}"]) 
+        final[count]=[ [xcoords[i], ycoords[i]] for i in range(len(xcoords))]
+        texts.append(cycletexts)
+        count+=1
+    return final, texts
+
+
+    
         
 if __name__ == '__main__':
     I=[0,2,4]

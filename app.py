@@ -5,16 +5,17 @@ from flask import Flask, redirect, render_template, request, url_for
 import pickle
 from datetime import datetime, date
 
-from visual import threejsSpheresText, chipfiringVisual, chipfiringVisual2
-from threedfiring import chipfiring3d
 import time
 
 #from dotenv import load_dotenv, find_dotenv
 #load_dotenv(find_dotenv())
 import sys
 sys.path.append("./ffields")
-
 from ffields import plotgcycles
+
+sys.path.append("./chipfiring")
+from chipfiring.visual import threejsSpheresText, chipfiringVisual, chipfiringVisual2
+from chipfiring.threedfiring import chipfiring3d
 
 
 app = Flask(__name__)
@@ -53,6 +54,10 @@ def guardarSesionActual(name='*unsaved '):
 
 
 
+
+
+    
+
 @app.route("/ff", methods=("GET", "POST"))
 def ff():
     def UD(bool):
@@ -60,9 +65,20 @@ def ff():
             return 'U'
         else:
             return 'D'
-    def UDpattern(indexlist):
+    def udpattern(indexlist):
         udlist=[UD(i in indexlist) for i in range(p)]
         return "".join(udlist)
+    def plotJS(p,n,I):
+        filename=f"ffplots/p{p}n{n}I{'-'.join([str(val) for val in I])}.png"
+        plotgcycles.saveplot(p,n,I,f"./static/{filename}")
+        time.sleep(1)
+        allcoordinates, texts= plotgcycles.createJSplot(p,n, I)
+        return render_template("ffields.html",
+                           filename=filename,
+                           p=p, n=n, udpattern=udpattern(I),
+                           allcoordinates=allcoordinates,
+                           texts=texts,
+                           jslen=len(allcoordinates))
     if request.method == "POST":
         p = int(request.form["p"])
         n = int(request.form["n"])
@@ -72,27 +88,11 @@ def ff():
         else:
             UDpattern= request.form["UDpattern"]
         I=[i for i in range(p) if UDpattern[i]=="U"]
-        filename=f"ffplots/p{p}n{n}I{'-'.join([str(val) for val in I])}.png"
-        #plotgcycles.saveplot(p,n,I,f"./static/{filename}")
-        time.sleep(1)
-        # allcoordinates={0:[ [0,0], [0.5,0.5] ], 1:[[0.66666,0.666666]], 2:[[0.2,0.2], [0.2 , 0.7], [0.7,0.7], [0.7, 0.2]]}
-        allcoordinates, texts= plotgcycles.createJSplot(p,n, I)
-        return render_template("ffields.html",
-                               filename=filename,
-                               p=p, n=n, udpattern=UDpattern,
-                               allcoordinates=allcoordinates,
-                               texts=texts,
-                               jslen=len(allcoordinates))
+        return plotJS(p,n,I)
     p=2
-    n=3
+    n=2
     I=[0]
-    filename=f"ffplots/p{p}n{n}I{'-'.join([str(val) for val in I])}.png"
-    #plotgcycles.saveplot(p,n,I,f"./static/{filename}")
-    time.sleep(1)
-    return render_template("ffields.html",
-                           filename=filename,
-                           p=p, n=n, udpattern=UDpattern(I))
-    
+    return plotJS(p,n,I)
     
 # @app.route("/sesiones", methods=("GET", "POST"))
 # def editar_sesiones():

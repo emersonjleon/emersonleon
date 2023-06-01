@@ -81,7 +81,7 @@ def test_piI(p,n,I):
 
 
 def gI(xval,I,p):
-    """create a piecewise linear function from [0,1] to [0,1] with increase pattern I and slope +/-1/p (cadlag)"""
+    """create a piecewise linear function from [0,1] to [0,1] with increase pattern I and slope +- p (cadlag)"""
     a0= p*xval- p*xval%1
     #print(a0)
     #print(I)

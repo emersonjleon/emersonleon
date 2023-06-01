@@ -30,29 +30,13 @@
 	margin-left: 20px;
 	align: left;
 	position: relative;
-	left: 330px;
-	top:80px;
-      width: 900px;
-      height: 800px;
-      /* background: white; */
-      /* border: 1px solid black; */
-    }
-
-    .canvas-image-background {
-	/* Esto es bizarro... funciona, pero podría fracasar si intentas mover algo...*/
-	z-index:-10;
-	position: relative;
-	left: -162px;
-	top: -103px;
-      width: 1020px;
-      height: 655px;
+	left: 320px;
+      width: 1000px;
+      height: 600px;
       background: white;
-      /* border: 1px solid black; */
-      overflow-x: scroll;
-
+      border: 1px solid black;
     }
 
-    
     .canvas-container canvas {
       position: absolute;
       top: 0;
@@ -104,19 +88,19 @@
       <h2>Fixed Points of functions going up and down</h2>
 
 
-      <!-- <div class="w3-col l12" style="text-align: center"> -->
+      <div class="w3-col l12" style="text-align: center">
 	<div class="w3-row">
-	  <div class="w3-col m7" >
+	  <div class="w3-col m5 s12" >
 	    <div  class="alignleft">
 	      <p>
-		We consider piecewise linear functions g(x) going up and down p times. The fixed points of g&#8319; are in bijection with elements of the finite field with p&#8319; elements, where orbits under g are in correspondence with  irreducible polynomials over the field.
+		We consider piecewise linear functions f(x) going up and down p times. The fixed points of f&#8319; are in bijection with elements of the finite field with p&#8319; elements, where orbits under f are in correspondence with  irreducible polynomials over the field.
 	      </p>
 	      <p>
-		This is a joint work of Julián Pulido y Emerson León. More details of these bijections: <a href="https://arxiv.org/abs/2111.13745">article</a>, <a href="https://emersonjleon.github.io/emersonjleon/math/finitefields.pdf" target="_blank">slides</a>.
+		This is a joint work of Julián Pulido y Emerson León. More details of these bijections can be found <a href="https://arxiv.org/abs/2111.13745">here</a>.
 	      </p>
 	    </div>
 	  </div>
-    <div class="w3-col m5 s12 ">
+    <div class="w3-col m4 s12 ">
     
       <form class="old" action="/ff" method="post">
 	<p>
@@ -152,40 +136,29 @@
     
       </div>
     </div>
-
-   
     <!-- </div> -->
      
 <!-- ########################################## -->
-<div class="w3-col l12" style="text-align: left">
-
-  <div class="canvas-container">
-      <canvas id="myCanvas" width="720" height="460"></canvas>
-	<img class="canvas-image-background" src="{{ url_for('static', filename=filename) }}">
-
+    <div class="canvas-container">
+      <canvas id="myCanvas" width="1000" height="600"></canvas>
       <div class="bullets-container"></div>
-
-
-
     </div>
 
 
     <div id="output" >
   
     </div>
-    <div class="w3-col l12" style="text-align: center">
-    <!-- <div  class="end"> -->
-      <!-- <p> -->
-      <!-- 	<a   href="{{ url_for('static', filename=filename) }}" > picture </a> -->
-      <!--  </p> -->
+    <div  class="end">
+      <p>
+	<a   href="{{ url_for('static', filename=filename) }}" > picture </a>
+       </p>
       
       <p>
 	Visualization by <a href="..">Emerson León</a>  <br>
       </p>
     
     </div>
-</div> 
-</div> 
+    
 
 </body>
 
