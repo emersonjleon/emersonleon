@@ -59,7 +59,7 @@ def guardarSesionActual(name='*unsaved '):
 
     
 
-@app.route("/ff", methods=("GET", "POST"))
+@app.route("/fixedpoints", methods=("GET", "POST"))
 def ff():
     def UD(bool):
         if bool:
