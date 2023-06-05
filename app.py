@@ -13,6 +13,7 @@ import sys
 sys.path.append("./ffields")
 #sys.path.append("./emersonjleon/ffields")
 from ffields import plotgcycles
+from ffields.ff import permutation_piI 
 sys.path.append("./chipfiring")
 #sys.path.append("./emersonjleon/chipfiring")
 from chipfiring.visual import threejsSpheresText, chipfiringVisual, chipfiringVisual2
@@ -73,13 +74,15 @@ def ff():
         filename=f"ffplots/p{p}n{n}I{'-'.join([str(val) for val in I])}.png"
         plotgcycles.saveplot(p,n,I,f"./static/{filename}")
         time.sleep(1)
+        permutation=permutation_piI(p,n,I)
         allcoordinates, texts= plotgcycles.createJSplot(p,n, I)
         return render_template("ffields.html",
-                           filename=filename,
-                           p=p, n=n, udpattern=udpattern(I),
-                           allcoordinates=allcoordinates,
-                           texts=texts,
-                           jslen=len(allcoordinates))
+                               filename=filename,
+                               p=p, n=n, udpattern=udpattern(I),
+                               allcoordinates=allcoordinates,
+                               texts=texts,
+                               jslen=len(allcoordinates),
+                               permutation=permutation)
     if request.method == "POST":
         p = int(request.form["p"])
         n = int(request.form["n"])

@@ -71,6 +71,8 @@ def test_piI(p,n,I):
     for i in range(p**n):
         print((piI(i,p,n,I)),end=' ') 
 
+def permutation_piI(p,n,I):
+    return ", ".join([ str(piI(i,p,n,I)) for i in range(p**n)])
 
 # def test_Iconjecture(p,n,I):
 #     """we want to check empirically that B_alpha,I is a proper bijection for the fixed points. (p,n,I)"""
