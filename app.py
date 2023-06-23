@@ -188,10 +188,13 @@ def index():
     return render_template("index.html", links=links)
 
 
+@app.route("/oldblog")
+def oldblog():
+    return render_template("blog/oldblog.html")
+
 @app.route("/blog")
 def blog():
-    return render_template("blog.html")
-
+    return render_template("blog/blog.html")
 
 
 @app.route("/visual", methods=("GET", "POST"))
