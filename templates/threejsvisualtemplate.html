@@ -1,0 +1,223 @@
+
+<!doctype html>
+<!doctype html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <head>
+    <title> 3D Visualization</title>
+    
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='icos.png') }}"  />
+    
+  <link rel="stylesheet" href="/static/main.css" />
+  </head>
+
+
+<style>
+#canvas {
+    /* background-color: #000; */
+    width: 1000px;
+    height: 700px;
+    /* border: 1px solid black; */
+    margin: 10px;
+    /* padding: 10px; */
+    /*position: static; /* fixed or static */
+    /* top: 10px; */
+    /* left: 10px; */
+}
+
+#ballsdemo {
+    width: 400px;
+    height: 80px;
+    /* padding: 0px; */
+    margin: 10px;
+    /* bottom: 10px; */
+    /* left: 10px; */
+}
+
+
+</style>
+
+
+
+  <body>
+    <div class="w3-container center"> 
+      <h3>Chip Firing 3D Visualization</h3>
+      
+      <div>
+	<div id="canvas"></div>
+
+
+	<hr>
+ 
+      </div>
+
+
+      <button id='button' class="button" onClick="toggleAutorotate() "> Toggle Autorotate </button>
+    </div>
+    <div>
+      Visualization by <a href="..">Emerson León</a>  <br>
+   
+  <!--   <a href="/sandpile">Sandpile</a> -->
+    
+    </div>
+
+  </body>
+  
+  <script src="https://emersonjleon.github.io/emersonjleon/threejs/js/three.js">
+  </script>
+  <script src="https://emersonjleon.github.io/emersonjleon/threejs/js/controls/OrbitControls.js">
+  </script>
+
+<script>
+  ///////////three.js code
+  container = document.getElementById( 'canvas' );
+  document.body.appendChild( container );
+
+  renderer = new THREE.WebGLRenderer();
+  var w = 1000;
+  var h = 700;
+  renderer.setSize( w, h );
+  container.appendChild( renderer.domElement );
+          
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x2244aa);
+          
+  //var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+  //camera.position.z = 5;
+//camera
+
+  var VIEW_ANGLE = 65,
+  ASPECT = w / h,
+       // Aspect ratio// window.innerWidth/window.innerHeight // WIDTH / HEIGHT,
+  NEAR = 2,
+  FAR = 100000;
+  
+  var camera =
+      new THREE.PerspectiveCamera(
+	  VIEW_ANGLE,
+	  ASPECT,
+	  NEAR,
+	  FAR);
+  
+  camera.position.z = 1000;
+
+
+  // orbit controls
+  var controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.panSpeed= 1.8;
+
+  // material
+  var lambertmaterial = new THREE.MeshLambertMaterial({ color: 0x555555 });  
+      
+  yellowmaterial= new THREE.MeshBasicMaterial({ 
+      color: 0xaaaa00 , 
+      side: THREE.DoubleSide, 
+      transparent: true,
+      opacity: 0.7
+  });
+  
+  orangematerial= new THREE.MeshBasicMaterial({ 
+      color: 0xbb7700 , 
+      side: THREE.DoubleSide, 
+      transparent: true,
+      opacity: 0.7
+  });
+  
+  redmaterial= new THREE.MeshBasicMaterial({ 
+      color: 0xbb0000 , 
+      side: THREE.DoubleSide, 
+      transparent: true,
+      opacity: 0.7
+  });
+  
+  bluematerial= new THREE.MeshBasicMaterial({ 
+      color: 0x0022aa , 
+      side: THREE.DoubleSide, 
+      transparent: true,
+      opacity: 0.7
+  });
+  var trgeometry = new THREE.Geometry();
+
+  
+  //{{ SplinesCode}}
+      
+      
+      
+      
+      //add cube in background
+      var geometry = new THREE.BoxGeometry( 400, 400, 10 );
+      var cube = new THREE.Mesh( geometry, lambertmaterial );
+      cube.position.z=-200;
+      scene.add( cube );
+      
+      
+      
+
+  // LIGHTS
+
+  var ambient = new THREE.AmbientLight(0xeeeedd, 0.7);
+  scene.add(ambient);
+	  
+  // create a point light
+  var pointLight =  new THREE.PointLight(0x999999);
+  pointLight.position.x = 10;
+  pointLight.position.y = 50;
+  pointLight.position.z = 130;
+  // add to the scene
+  scene.add(pointLight);
+      
+  var pointLight2 = new THREE.PointLight(0x888888);
+  pointLight2.position.x = -50;
+  pointLight2.position.y = -50;
+  pointLight2.position.z = 130;
+      
+  // add to the scene
+  scene.add(pointLight2);
+
+
+  var render = function () {
+      requestAnimationFrame( render );
+      controls.update();
+      
+      //mySpheres.rotation.x += 0.0001;
+      //mySpheres.rotation.y += 0.002;
+      
+      renderer.render(scene, camera);
+  };
+
+  render();
+
+
+
+  function toggleAutorotate()
+  {
+      if ( controls.autoRotate==false ) //play video
+      {
+	  controls.autoRotate=true;
+      }
+      else {
+	  controls.autoRotate=false;
+      }
+	  
+  }
+
+
+
+  
+  
+
+  function setMaxDistance(maxdist) {   // txt == content of form input
+      console.log('max distance');
+      console.log(maxdist);
+      camera.far=maxdist;
+  }
+
+  
+
+  
+</script>
+
+</html>
