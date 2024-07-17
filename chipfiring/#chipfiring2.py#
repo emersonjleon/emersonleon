@@ -56,7 +56,6 @@ def fulltopling(matrix):
 
 
 
-
 if __name__=="__main__":
 
     for n in range(8):

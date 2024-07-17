@@ -231,3 +231,10 @@ input[type="submit"] {
 .dalle img {
     margin: -165px 0px 0px 0px;
 }
+
+.pdf {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+
+.pdf,

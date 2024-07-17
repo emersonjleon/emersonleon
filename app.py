@@ -173,6 +173,10 @@ def visualpage():
     return render_template("visualization.html")
 
 
+@app.route("/ia", methods=("GET", "POST"))
+def iapage():
+    return render_template("ia.html")
+
 
 
 @app.route("/index")
