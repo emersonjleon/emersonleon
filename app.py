@@ -178,6 +178,11 @@ def iapage():
     return render_template("ia.html")
 
 
+@app.route("/uan/temas2024", methods=("GET", "POST"))
+def temas2024page():
+    return render_template("uan/temas2024/home.html")
+
+
 
 @app.route("/index")
 def index():
