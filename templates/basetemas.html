@@ -19,10 +19,9 @@
 
 <div> 
     <!-- <a href="/index">Index</a> -->
-    <a class="headlink" href="/home">Home</a>
-    <a class="headlink" href="/math">Math</a>
-    <a class="headlink" href="/visual">Visualization</a>
-    <a class="headlink" href="/ia">IA</a>
+    <a class="headlink" href=""{{ url_for('temas2024page') }}"">Inicio</a>
+    <a class="headlink" href=""{{ url_for('materialtemas2024page') }}"">Material Adicional</a>
+    <a class="headlink" href="/math">Emerson León</a>
 <!--   <a href="https://elcyborgchaman.pythonanywhere.com"> -->
   <!-- Cyborg</a > -->
 
@@ -266,16 +265,38 @@ icospheres.add( sphere9 );
       scene.add(pointLight2);
 
 
-  var render = function () {
-      requestAnimationFrame( render );
-      
-      
-      icospheres.rotation.x += 0.01;
-      icospheres.rotation.y += 0.01;
-      
-      renderer.render(scene, camera);
-  };
+  
+/////////////////
+// Variable para controlar el estado de la animación
+let isAnimating = true;
 
+// Función de renderizado modificada para tener control sobre la animación
+var render = function () {
+    if (isAnimating) {
+        icospheres.rotation.x += 0.004;
+        icospheres.rotation.y += 0.004;
+        renderer.render(scene, camera);
+    }
+    requestAnimationFrame(render);
+};
+
+function toggleAnimation() {
+        isAnimating = !isAnimating;
+    }
+  
+setTimeout(toggleAnimation, 700);
+  
+// Captura el evento de clic en el canvas
+document.getElementById("canvas").addEventListener("click", function () {
+    // Alterna el estado de la animación
+        isAnimating = !isAnimating;
+});
+
+
+
+  
+
+  
   render();
 
 </script>

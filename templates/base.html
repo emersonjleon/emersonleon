@@ -263,16 +263,44 @@ icospheres.add( sphere9 );
       // add to the scene
       scene.add(pointLight2);
 
+/////////////////
+// Variable para controlar el estado de la animación
+let isAnimating = true;
 
-  var render = function () {
-      requestAnimationFrame( render );
+// Función de renderizado modificada para tener control sobre la animación
+var render = function () {
+    if (isAnimating) {
+        icospheres.rotation.x += 0.004;
+        icospheres.rotation.y += 0.004;
+        renderer.render(scene, camera);
+    }
+    requestAnimationFrame(render);
+};
+
+function toggleAnimation() {
+        isAnimating = !isAnimating;
+    }
+  
+setTimeout(toggleAnimation, 700);
+  
+// Captura el evento de clic en el canvas
+document.getElementById("canvas").addEventListener("click", function () {
+    // Alterna el estado de la animación
+        isAnimating = !isAnimating;
+});
+
+
+
+  
+  // var render = function () {
+  //     requestAnimationFrame( render );
       
       
-      icospheres.rotation.x += 0.01;
-      icospheres.rotation.y += 0.01;
+  //     icospheres.rotation.x += 0.006;
+  //     icospheres.rotation.y += 0.006;
       
-      renderer.render(scene, camera);
-  };
+  //     renderer.render(scene, camera);
+  // };
 
   render();
 

@@ -177,10 +177,15 @@ def visualpage():
 def iapage():
     return render_template("ia.html")
 
-
-@app.route("/uan/temas2024", methods=("GET", "POST"))
+###################
+@app.route("/uan/temas2024/temas", methods=("GET", "POST"))
 def temas2024page():
     return render_template("uan/temas2024/home.html")
+
+@app.route("/uan/temas2024/material", methods=("GET", "POST"))
+def materialtemas2024page():
+    return render_template("uan/temas2024/material.html")
+###############
 
 
 
