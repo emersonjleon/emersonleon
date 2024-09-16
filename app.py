@@ -158,12 +158,12 @@ def has_no_empty_params(rule):
     return len(defaults) >= len(arguments)
 
 
-@app.route("/")
+
 @app.route("/home", methods=("GET", "POST"))
 def homeapp():
     return render_template("home.html")
 
-
+@app.route("/")
 @app.route("/math", methods=("GET", "POST"))
 def mathpage():
     return render_template("math.html")
@@ -173,9 +173,9 @@ def visualpage():
     return render_template("visualization.html")
 
 
-@app.route("/ia", methods=("GET", "POST"))
+@app.route("/uan/olimpiadaIA", methods=("GET", "POST"))
 def iapage():
-    return render_template("ia.html")
+    return render_template("uan/ia.html")
 
 ###################
 @app.route("/uan/temas2024/temas", methods=("GET", "POST"))

@@ -1,0 +1,87 @@
+<!doctype html>
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div>
+  <div class=story>
+    <div class=center>
+     
+
+<h3 >Olimpiada Colombiana de Inteligencia artificial</h3>
+    </div>
+    
+    
+    
+
+      <p> 
+	Actualmente estoy trabajando en la Universidad Antonio Nariño como organizador de la Olimpiada Colombiana de Inteligencia Artificial. En esta página estaré compartiendo información relacionada con las futuras actividades que tengamos.
+
+      </p>
+
+
+      <div class=center>
+	<img src="{{ url_for('static', filename='uan/logoiablack.png') }}" style="width: 60%"/>
+      </div>
+
+ 
+  <h4 >Semillero 2024</h4>
+  <p>  Te invitamos al primer semillero de preparación para participar en las competencias de la Olimpiada Colombiana de Inteligencia artificial que se realizará el próximo año. Estudiaremos las bases de los algoritmos principales detrás de las IA, y trabajaremos en diferentes retos y problemas que nos motiven a profundizar más. Todas las actividades serán de forma virtual.
+  </p>
+
+
+  
+      <ul>
+ 	<li> Horarios: Martes de 5pm a 6:30 p.m.
+       	<li> Fecha de inicio: martes 8 de octubre
+       	<li> Finalización: martes 3 de diciembre
+       	<li> Prerrequisitos: (recomendado) bases de programación, lenguaje <b><code>python</code></b> 
+       	<li> Costo: Gratis (oferta de lanzamiento)
+	<li> Inscripciones:    <a href="..." target="_blank">Aquí</a>
+      </ul>
+
+
+
+<div class=center>
+  <!-- logo semillero IA -->
+  <div id="logo"></div>
+</div>
+
+  <h4 >Olimpiada Internacional IOAI</h4>
+
+ <p> 
+ En agosto de 2024 participamos en la <a href="https://ioai-official.org/" target="_blank">IOAI</a> que se realizó en Burgas, Bulgaria. Allí el equipo colombiano conformado por Juán Camilo Almanza, Pablo González, Jose Miguel Rodriguez y Martín Aldana obtuvo cuatro medallas de bronce en la ronda científica y cuatro medallas de bronce en la ronda práctica. Los resultados pueden verse  <a href="https://ioai-official.org/results">aquí</a>.
+ </p>
+
+
+ 
+<img src="{{url_for('static', filename='/uan/ioai/equipoioai2024.jpeg')}}" align="middle" style="width: 100%"/>
+
+<img src="{{url_for('static', filename='/uan/ioai/Xpetro.jpeg')}}" align="middle" style="width: 100%"/>
+		
+
+<h4 >Ética en IA y educación</h4>
+  <p> El 16 de julio de 2024 compartí una charla para el curso de profesores "Inteligencia Artificial para la educación (nivel I)"
+
+    <a href="https://emersonjleon.github.io/emersonjleon/olimpiadaIA/PresentacionIA.pdf" target="_blank">Presentación</a></p>
+  
+  <p> En el segundo semestre estaré acompañando la segunda parte de este curso como tutor en  "Inteligencia Artificial en el Contexto Educativo (nivel 2)"</p>
+
+        <object class="pdf" 
+            data= "https://emersonjleon.github.io/emersonjleon/olimpiadaIA/presentacionIA.pdf"
+            width="400"
+            height="300">
+    </object>
+</p>
+
+
+
+
+</div>
+</div>
+
+<script src="https://emersonjleon.github.io/emersonjleon/olimpiadaIA/logo.js"></script>
+
+     
+{% endblock %}
