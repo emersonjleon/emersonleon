@@ -180,11 +180,11 @@ def iapage():
 ###################
 @app.route("/uan/temas2024/temas", methods=("GET", "POST"))
 def temas2024page():
-    return render_template("uan/temas2024/home.html")
+    return render_template("uan/temas2024/2home.html")
 
 @app.route("/uan/temas2024/material", methods=("GET", "POST"))
 def materialtemas2024page():
-    return render_template("uan/temas2024/material.html")
+    return render_template("uan/temas2024/2home.html")
 ###############
 
 
