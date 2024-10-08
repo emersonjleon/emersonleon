@@ -6,6 +6,7 @@ import pickle
 from datetime import datetime, date
 
 import time
+import json
 
 #from dotenv import load_dotenv, find_dotenv
 #load_dotenv(find_dotenv())
@@ -185,6 +186,62 @@ def temas2024page():
 @app.route("/uan/temas2024/material", methods=("GET", "POST"))
 def materialtemas2024page():
     return render_template("uan/temas2024/2home.html")
+###############
+@app.route("/uan/semillero2024", methods=("GET", "POST"))
+def semillero2024():
+    return render_template("uan/semillero/home.html")
+
+@app.route("/uan/codeinput", methods=("GET", "POST"))
+def submit_code():
+    all_programs=[]
+    if request.method == 'POST':
+        # Obtener el código Python enviado
+        name=request.form.get('name', '')
+        description=request.form.get('description', '')
+        code = request.form.get('python_code', '')
+
+        all_programs.append((name, description,code))
+        # Mostrar código y salida con formato conservado
+
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"{name}_{timestamp}.py"
+        json_filename = f"{name}_{timestamp}.json"
+        
+        # Crear un directorio para almacenar los programas, si no existe
+        directory = "submitted_programs"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+# Crear el contenido del JSON
+        program_data = {
+            "name": name,
+            "description": description,
+            "code": code,
+            "timestamp": timestamp
+        }
+
+        # Guardar el código y los metadatos en un archivo JSON
+        json_file_path = os.path.join(directory, json_filename)
+        with open(json_file_path, 'w') as json_file:
+            json.dump(program_data, json_file, indent=4)
+
+        # Agregar el programa a la lista global
+        all_programs.append(program_data)
+
+        # Guardar todos los programas en un archivo JSON
+        all_programs_file_path = os.path.join(directory, "all_programs.json")
+        with open(all_programs_file_path, 'w') as all_file:
+            json.dump(all_programs, all_file, indent=4)
+
+        # Devolver una respuesta de éxito
+        
+        return "su código se envió correctamente."
+
+    
+    return render_template("uan/semillero/codeinput.html")
+
+
+
 ###############
 
 

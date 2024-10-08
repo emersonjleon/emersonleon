@@ -114,13 +114,21 @@ input[type="submit"] {
   text-align: center;
 }
 
-
-
-
 .story {
   max-width: 500px;
   margin-top: 10px;
   text-align: justify;
+}
+
+.curso {
+    width: calc(80% - 20px); /* mismo efecto de ancho */
+  margin: 0 auto; /* centrado horizontal */
+}
+
+@media (max-width: 768px) {
+  .curso {
+    width: 100%; /* ajusta el ancho en pantallas pequeñas */
+  }
 }
 
 .alignleft {

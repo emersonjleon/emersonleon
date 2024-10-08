@@ -1,138 +1,175 @@
+
 <!doctype html>
-{% extends "basetemas.html" %}
-
-
-{% block content %}
-<div class="w3-col l10" style="text-align: left">
-  
-  <div>
-    <h4>Objetivo</h4>
-    Avanzar en el conocimiento global de las matemáticas como una actividad dinámica y moderna, que interactúa con muchas de nuestras actividades cotidianas y expande el entendimiento humano, buscando comprender cada vez mejor el mundo que nos rodea. 
+<!doctype html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <div class="w3-container center">
+    <head>
+      <title>Temas Escogidos de las Matemáticas Contemporáneas</title>
+      <link     rel="shortcut icon"      href="{{ url_for('static', filename='icos.png') }}"  />
+      <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+    </head>
+    <body>
     
-    
-    <h4>Horario</h4>
-    Sábados 11am a 1pm
-     &nbsp; &nbsp; &nbsp; &nbsp;<strong>Lugar</strong>&nbsp; Salón 503 (Bloque E, UAN nf) 
-     &nbsp; &nbsp; &nbsp; &nbsp;<strong>Meet</strong> &nbsp; &nbsp; urp-mhdb-why
-    
-  </div>
-</div>
-
-
-    
-    
-
-    
-<div class="w3-row">
-  <!-- <div class="w3-col l1 s0"> -->
-    <!-- </div>   -->
-  
-  <div class="w3-col m8 s12" style="text-align: left; margin-right: 10px">
-    
-    
-    
-    <h4>Programación</h4>
-    <ul>
-      <li><strong>3 de agosto:</strong> Matemáticas en la IA</li>
-      <li><strong>10 de agosto:</strong> (ioai)</li>
-      <li><strong>17 de agosto:</strong> Conociéndonos un poco</li>
-      <li><strong>24 de agosto:</strong> Grafos: 4 colores y la conjetura de Hirsh
-	<ul>
-	  <li> Colab grafos: <a href="https://colab.research.google.com/drive/1a90fIRwvvx92z-_GaIoPpMmO8hBPFoFy?usp=sharing">link</a>
-	    
-	  </li>  
-	  <li>
-	    Video de Francisco Santos: <a href="https://www.youtube.com/watch?v=i_IhaMwULsE">link</a>
-
-	  </li>  
-	</ul>
-
-      </li>
-      <li><strong>31 de agosto:</strong> Algoritmo kNNG y f-vectores de poliedros
-      	<ul>
-	  <li>
-	    Notas grafos KNN (Alexandra): <a href="{{url_for('static', filename='/uan/temas2024/GRAFO DE K VECINOS  MÁS CERCANOS_SUAREZ ESCOBAR ALEXANDRA.pdf')}}">link</a>
-
-	  </li>  
-	  
-	</ul>
-      </li>
-      <li><strong>7 de septiembre:</strong> Álgebra Lineal, Matrices Laplacianas
-	<ul>
-		  <li>
-	    Video g-conjecture: <a href="https://www.youtube.com/watch?v=4445Mbw8pYg">link</a></li>
-	    
-	  </li>  
-	  <li>
-	    Video Juneh Huh: <a href="https://www.youtube.com/watch?v=ritFtfoRYmY">link</a></li>
-	  </li>  
-	</ul>
-
-</li>
-<li><strong>14 de septiembre:</strong> Análisis de Componentes Principales
-	<ul>
-	  <li> Compresión de imágenes con PCA: <a href="https://ichi.pro/es/compresion-de-imagenes-mediante-analisis-de-componentes-principales-pca-40953158306463">link</a></li>
-	  <li> Serrano Academy: Porqué se divide por <i>n-1</i> para estimar la varianza? <a href="https://www.youtube.com/watch?v=_sdNwY0KKUA">link</a></li>
-	</ul>
-
-</li>
-<li>
-  <strong>21 de septiembre:</strong>Taller, preparación de exposiciones
-	<ul>
-	  <li> Taller: <a href="https://emersonjleon.github.io/emersonjleon/uan/taller1.pdf">link</a> </li>
-	</ul>
-
-</li>
-      <li><strong>28 de septiembre:</strong> Exposiciones: Espacios Métricos, Criptografía</li>
-      <li><strong>5 de octubre:</strong></li>
-      <li><strong>12 de octubre:</strong> Entrega de Anteproyecto</li>
-      <li><strong>19 de octubre:</strong></li>
-      <li><strong>26 de octubre:</strong> Exposiciones </li>
-      <li><strong>2 de noviembre:</strong></li>
-      <li><strong>9 de noviembre:</strong> Quiz</li>
-      <li><strong>16 de noviembre:</strong></li>
-      <li><strong>23 de noviembre:</strong> Entrega final del proyecto</li>
-    </ul>
-  </div>
-  
-  
-  
-  <div class="w3-col m4 s12 ">
-    <div style="text-align: left; margin-left: 20px">
-      <h5>Notas</h5>
-      <ul>
-	<li> Dos exposiciones (30%) 
-	<li> Anteproyecto (30%)
-	<li> Quiz (10%)
-	<li> Presentación final (30%)
-	  
-      </ul>
+      <div class=curso>
       
+      <!--a href="/index"> <img src="/static/cyborgshaman.jpg" width="150" height="150" cursor="default"   /> </a-->
+      <h3 style="color: #004499;">Temas Escogidos de las Matemáticas Contemporáneas</h3>
+      
+      
+      <img src="/static/uan/logo.png" style="width: 20%"/>
+      
+      
+      <h5 style="color: #003355;">     <a class="headlink" href="/math">Emerson León</a></h5>
+      
+      
+      
+      
+      
+      <div>
+	
+	<div class="w3-col l10" style="text-align: left">
+	  
+	  <div>
+	    <h4>Objetivo</h4>
+	    Avanzar en el conocimiento global de las matemáticas como una actividad dinámica y moderna, que interactúa con muchas de nuestras actividades cotidianas y expande el entendimiento humano, buscando comprender cada vez mejor el mundo que nos rodea. 
+	    
+	    
+	    <h4>Horario</h4>
+	    Sábados 11am a 1pm
+	    &nbsp; &nbsp; &nbsp; &nbsp;<strong>Lugar</strong>&nbsp; Salón 503 (Bloque E, UAN nf) 
+	    &nbsp; &nbsp; &nbsp; &nbsp;<strong>Meet</strong> &nbsp; &nbsp; urp-mhdb-why
+	    
+	  </div>
+	  <!-- </div> -->
+	
+	
+	
+	
+	
+	
+	<div class="w3-row">
+	  <!-- <div class="w3-col l1 s0"> -->
+	    <!-- </div>   -->
+	  	  
+	  <div class="w3-col m8 s12" style="text-align: left; margin-right: 10px">
+	    
+	    
+	    
+	    <h4>Programación</h4>
+	    <ul>
+	      <li><strong>3 de agosto:</strong> Matemáticas en la IA</li>
+	      <li><strong>10 de agosto:</strong> (ioai)</li>
+	      <li><strong>17 de agosto:</strong> Conociéndonos un poco</li>
+	      <li><strong>24 de agosto:</strong> Grafos: 4 colores y la conjetura de Hirsh
+		<ul>
+		  <li> Colab grafos: <a href="https://colab.research.google.com/drive/1a90fIRwvvx92z-_GaIoPpMmO8hBPFoFy?usp=sharing">link</a>
+		    
+		  </li>  
+		  <li>
+		    Video de Francisco Santos: <a href="https://www.youtube.com/watch?v=i_IhaMwULsE">link</a>
+		    
+		  </li>  
+		</ul>
+		
+	      </li>
+	      <li><strong>31 de agosto:</strong> Algoritmo kNNG y f-vectores de poliedros
+      		<ul>
+		  <li>
+		    Notas grafos KNN (Alexandra): <a href="/static//uan/temas2024/GRAFO%20DE%20K%20VECINOS%20%20M%C3%81S%20CERCANOS_SUAREZ%20ESCOBAR%20ALEXANDRA.pdf">link</a>
+		    
+		  </li>  
+		  
+		</ul>
+	      </li>
+	      <li><strong>7 de septiembre:</strong> Álgebra Lineal, Matrices Laplacianas
+		<ul>
+		  <li>
+		    Video g-conjecture: <a href="https://www.youtube.com/watch?v=4445Mbw8pYg">link</a></li>
+		  
+	      </li>  
+	      <li>
+		Video Juneh Huh: <a href="https://www.youtube.com/watch?v=ritFtfoRYmY">link</a>
+	      </li>
+
+	      </ul>
+
+
+	      <li><strong>14 de septiembre:</strong> Análisis de Componentes Principales
+		<ul>
+		  <li> Compresión de imágenes con PCA: <a href="https://ichi.pro/es/compresion-de-imagenes-mediante-analisis-de-componentes-principales-pca-40953158306463">link</a></li>
+		  <li> Serrano Academy: Porqué se divide por <i>n-1</i> para estimar la varianza? <a href="https://www.youtube.com/watch?v=_sdNwY0KKUA">link</a></li>
+		</ul>
+		
+	      </li>
+	      <li>
+		<strong>21 de septiembre:</strong>Taller <a href="https://emersonjleon.github.io/emersonjleon/uan/taller1.pdf">link</a>
+		<ul>
+		  <li> Entrega: Creación de grafos y matrices laplacianas (colab, Alexandra, Andres) <a href="https://colab.research.google.com/drive/1o3nCOgbWo6Xj38JbBjUzj6y1wXg_L1R1?usp=sharing">link</a> </li>
+		</ul>
+		
+	      </li>
+	      <li><strong>28 de septiembre:</strong> Exposiciones: Espacios Métricos, Criptografía</li>
+	      <ul>
+		<li> Espacios Métricos (colab, Alexandra): <a href="https://colab.research.google.com/drive/1IC4xn3Fzhx6g0LvmxPMwRIQ9xKNfFnEi?usp=sharing">link</a> </li>
+		<li>Tarea Criptografía (Andres) <a href="https://emersonjleon.github.io/emersonjleon/uan/tarea-criptografia.JPG">link</a></li>
+		<li>Tarea Criptografía (colab) <a href= " https://colab.research.google.com/drive/1sWzzl87RGDVxpEFEEuccg8CknCBVbN6a?usp=sharing">link</a></li>
+	      </ul>
+	      
+	      <li><strong>5 de octubre:</strong> Final de exposiciones, revision del taller
+		<ul>
+		  <li> Espacios Métricos (chatGPT): <a href="https://chatgpt.com/share/67005ba8-379c-8008-be06-0a1662fb7a08">link</a> </li>
+		</ul>
+	      </li>
+	      <li><strong>12 de octubre:</strong>Chip Firing</li>
+	      <li><strong>19 de octubre:</strong>  Entrega de Anteproyecto: <a href="https://emersonjleon.github.io/emersonjleon/uan/anteproyecto.pdf">link</a></li>
+	      <li><strong>26 de octubre:</strong>  </li>
+	      <li><strong>2 de noviembre:</strong></li>
+	      <li><strong>9 de noviembre:</strong> Exposiciones</li>
+	      <li><strong>16 de noviembre:</strong></li>
+	      <li><strong>23 de noviembre:</strong> Entrega final del proyecto</li>
+	    </ul>
+	  </div>
+	  
+
+	  
+	  <div class="w3-col m4 s12 ">
+	    <div style="text-align: left; margin-left: 20px">
+	      <h5>Notas</h5>
+	      <ul>
+		<li> Dos exposiciones (30%) 
+		<li> Anteproyecto (30%)
+		<li> Quiz (10%)
+		<li> Presentación final (30%)
+		  
+	      </ul>
+	      
+	    </div>
+	    
+	    
+	    
+	  </div>
+	</div>
+	
+	<div  class="w3-col l6 m8 s12" style="align: center" id="logoh">
+	  
+	  <img src="/static/uan/logoh.png" style="width: 100%"/>
+	</div>
+	
+	
+	
+    </body>
+    
+    
+    
+    <div  id="canvas">
     </div>
     
-      
-    
+    </div>
   </div>
 </div>
 
-  <div  class="w3-col l6 m8 s12" style="align: center" id="logoh">
-
-    <img src="{{ url_for('static', filename='uan/logoh.png') }}" style="width: 100%"/>
-  </div>
-
-
-
-</body>
-
-
-  
-
-  <div  id="canvas">
-
-  </div>
-
-
-      
 
 
 
@@ -398,6 +435,10 @@ document.getElementById("canvas").addEventListener("click", function () {
 </script>
 
   
-{% endblock %}
 
+     </div>
   
+
+
+
+</html>
