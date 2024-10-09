@@ -1,0 +1,6 @@
+{
+    "name": "Alfonso Julio V\u00e1squez",
+    "description": "Como output nos indica cual de las dos palabras tiene mas palabras.",
+    "code": "#Escr\u00edbe aqu\u00ed tu c\u00f3digo!\r\npalab1=input(\"La primera palabra: \")\r\npalab2=input(\"La segunda palabra: \")\r\nif len(palab1) > len(palab2):\r\n    print(palab1, \" tiene mas letras que \", palab2, \".\", sep=\"\")\r\nelif len(palab1) < len(palab2):\r\n    print(palab2, \" tiene mas letras que \", palab1, \".\", sep=\"\")\r\nelse:\r\n    print(\"Las dos palabras tienen la misma cantidad de letras.\")",
+    "timestamp": "20241008_230758"
+}

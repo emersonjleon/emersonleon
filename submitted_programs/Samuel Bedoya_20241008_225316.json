@@ -1,0 +1,6 @@
+{
+    "name": "Samuel Bedoya",
+    "description": "Es un programa que elije un n\u00famero aleatorio, y luego mide el tiempo que el usuario se demora en escribir este mismo n\u00famero al programa",
+    "code": "import random\r\nimport time\r\nNum = random.randint(0, 10)\r\nGuess = None\r\nprint(\"Intenta escribir el n\u00famero que aparezca tan r\u00e1pido como puedas!\")\r\ntime.sleep(1)\r\nprint(\"3\")\r\ntime.sleep(1)\r\nprint(\"2\")\r\ntime.sleep(1)\r\nprint(\"1\")\r\ntime.sleep(1)\r\nprint(f\"El n\u00famero es:  {Num}\")\r\nStart = time.time()\r\nGuess = int(input(\"\"))\r\nGuess_time = time.time() - Start\r\nif Guess == Num:\r\n  print(f\"Tu tiempo fue de {Guess_time}\")\r\nelse:\r\n  print(\"N\u00famero incorrecto! Intentalo de nuevo\")",
+    "timestamp": "20241008_225316"
+}

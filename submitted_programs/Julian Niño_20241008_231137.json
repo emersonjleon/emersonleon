@@ -1,0 +1,6 @@
+{
+    "name": "Julian Ni\u00f1o",
+    "description": "Pizzeria Italia",
+    "code": "print(\"Bienvenido a la Pizzeria Italia\")\r\nmenu_choice = input(\"\u00bfQue deseas comprar? (En este momento tenemos pizza de queso y pizza de pepperoni): \")\r\namount = int(input(\"\u00bfDe cuantas porciones?: \"))\r\nif amount < 6:\r\n  amount = int(input(\"Solo hacemos pizzas de 6 o m\u00e1s porciones. Intenta otra vez: \"))\r\n  if amount < 6:\r\n    print(\"Vayase\")\r\n  else:\r\n    print(\"Su pedido es de \"+ str(menu_choice) + \" con \"+ str(amount) + \" porciones\")\r\n    yn = input(\"\u00bfEs correcto? (y/n)\")\r\n    if yn == \"y\":\r\n      print(\"Listo, su pedido estar\u00e1 listo en unos minutos\")\r\n    else :\r\n      print(\"Vayase\")\r\nelse:\r\n  print(\"Su pedido es de \"+ str(menu_choice) + \" con \"+ str(amount) + \" porciones\")\r\n  yn = input(\"\u00bfEs correcto? (y/n)\")\r\n  if yn == \"y\":\r\n    print(\"Listo, su pedido estar\u00e1 listo en unos minutos\")\r\n  else :\r\n    print(\"Vayase\")",
+    "timestamp": "20241008_231137"
+}

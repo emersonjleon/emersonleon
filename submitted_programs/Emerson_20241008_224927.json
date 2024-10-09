@@ -1,0 +1,6 @@
+{
+    "name": "Emerson",
+    "description": "ejemplo de programa que pide una contrase\u00f1a",
+    "code": "#Escr\u00edbe aqu\u00ed tu c\u00f3digo!\r\n\r\na=input('ingrese el c\u00f3digo secreto')\r\nif a=='1234xyz':\r\n  print('c\u00f3digo correcto')\r\n  print('bienvenido')\r\nelse:\r\n  print('c\u00f3digo incorrecto')",
+    "timestamp": "20241008_224927"
+}

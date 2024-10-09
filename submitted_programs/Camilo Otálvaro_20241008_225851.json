@@ -1,0 +1,6 @@
+{
+    "name": "Camilo Ot\u00e1lvaro",
+    "description": "suma de cuadrados de 2 edades",
+    "code": "#Suma de los cuadrados de dos edades\r\n\r\na=int(input(\"ingrese primer edad\"))\r\nb=int(input(\"ingrese la segunda edad\"))\r\n\r\nprint(f'la suma de los cuadrados de {a} y {b} es {a*a+b*b}')",
+    "timestamp": "20241008_225851"
+}

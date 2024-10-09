@@ -1,0 +1,6 @@
+{
+    "name": "JuanSebastian",
+    "description": "Contar vocales ",
+    "code": "def contar_vocales(frase):\r\n    vocales = \"aeiouAEIOU\"\r\n    contador = sum(1 for letra in frase if letra in vocales)\r\n    return contador\r\n\r\nfrase_usuario = input(\"Ingresa una frase: \")\r\ntotal_vocales = contar_vocales(frase_usuario)\r\nprint(f\"Total de vocales en la frase: {total_vocales}\")",
+    "timestamp": "20241008_225450"
+}

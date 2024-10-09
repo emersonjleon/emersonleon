@@ -1,13 +1,13 @@
 [
     [
-        "emersonleon",
-        "# prompt: un programa b\u00e1sico de python usando print, int, input, if, que sea divertido e inesperado",
-        "\r\n# prompt: un programa b\u00e1sico de python usando print, int, input, if, que sea divertido e inesperado\r\n\r\nimport random\r\n\r\nprint(\"\u00a1Bienvenido al juego de adivinar el n\u00famero m\u00e1gico!\")\r\nnumero_magico = random.randint(1, 10)\r\n\r\ntry:\r\n  intento = int(input(\"Introduce un n\u00famero del 1 al 10: \"))\r\n\r\n  if intento == numero_magico:\r\n      print(\"\u00a1Felicidades! Has adivinado el n\u00famero m\u00e1gico.\")\r\n  elif intento < numero_magico:\r\n      print(\"\u00a1Ups! El n\u00famero m\u00e1gico es mayor.\")\r\n  else:\r\n      print(\"\u00a1Ups! El n\u00famero m\u00e1gico es menor.\")\r\n\r\n  if intento == 7:  # Un evento inesperado y divertido\r\n      print(\"\u00a1Wow! Has encontrado el n\u00famero secreto.\")\r\n      print(\"\u00a1Ganaste un premio imaginario: un abrazo virtual de un oso panda!\")\r\n\r\nexcept ValueError:\r\n  print(\"Por favor, introduce un n\u00famero v\u00e1lido.\")"
+        "Sebastian Mu\u00f1oz ",
+        "codigo que dice quien ganaria en un combate entre estos 2 personajes y por que",
+        "contrase\u00f1a = input('Escribe qui\u00e9n ganar\u00eda en un combate entre Goku y Vegeta: ')\r\n\r\nif contrase\u00f1a == 'Goku':\r\n    print('.Respuesta correcta, Goku ganar\u00eda con su ultra instinto')\r\n    print('.Pero tendr\u00eda dificultades para ganarle a Vegeta')\r\nelif contrase\u00f1a == 'Vegeta':\r\n    print('.Respuesta incorrecta, Vegeta perder\u00eda por confiarse de su poder')\r\n    print('.Aunque le dar\u00eda muy buena pelea a Goku')\r\nelse:\r\n    print('Error: debes ingresar una respuesta v\u00e1lida Bro!')"
     ],
     {
-        "name": "emersonleon",
-        "description": "# prompt: un programa b\u00e1sico de python usando print, int, input, if, que sea divertido e inesperado",
-        "code": "\r\n# prompt: un programa b\u00e1sico de python usando print, int, input, if, que sea divertido e inesperado\r\n\r\nimport random\r\n\r\nprint(\"\u00a1Bienvenido al juego de adivinar el n\u00famero m\u00e1gico!\")\r\nnumero_magico = random.randint(1, 10)\r\n\r\ntry:\r\n  intento = int(input(\"Introduce un n\u00famero del 1 al 10: \"))\r\n\r\n  if intento == numero_magico:\r\n      print(\"\u00a1Felicidades! Has adivinado el n\u00famero m\u00e1gico.\")\r\n  elif intento < numero_magico:\r\n      print(\"\u00a1Ups! El n\u00famero m\u00e1gico es mayor.\")\r\n  else:\r\n      print(\"\u00a1Ups! El n\u00famero m\u00e1gico es menor.\")\r\n\r\n  if intento == 7:  # Un evento inesperado y divertido\r\n      print(\"\u00a1Wow! Has encontrado el n\u00famero secreto.\")\r\n      print(\"\u00a1Ganaste un premio imaginario: un abrazo virtual de un oso panda!\")\r\n\r\nexcept ValueError:\r\n  print(\"Por favor, introduce un n\u00famero v\u00e1lido.\")",
-        "timestamp": "20241008_165029"
+        "name": "Sebastian Mu\u00f1oz ",
+        "description": "codigo que dice quien ganaria en un combate entre estos 2 personajes y por que",
+        "code": "contrase\u00f1a = input('Escribe qui\u00e9n ganar\u00eda en un combate entre Goku y Vegeta: ')\r\n\r\nif contrase\u00f1a == 'Goku':\r\n    print('.Respuesta correcta, Goku ganar\u00eda con su ultra instinto')\r\n    print('.Pero tendr\u00eda dificultades para ganarle a Vegeta')\r\nelif contrase\u00f1a == 'Vegeta':\r\n    print('.Respuesta incorrecta, Vegeta perder\u00eda por confiarse de su poder')\r\n    print('.Aunque le dar\u00eda muy buena pelea a Goku')\r\nelse:\r\n    print('Error: debes ingresar una respuesta v\u00e1lida Bro!')",
+        "timestamp": "20241008_235514"
     }
 ]

@@ -1,0 +1,6 @@
+{
+    "name": "==| CONVERSI\u00d3N DE UNIDADES DE TEMPERATURA \u00baC --> \u00baF |==",
+    "description": "Prigrama que convierte Grados Celsius a grados Farenheit",
+    "code": "import time\r\n\r\nprint(\"==| CONVERSI\u00d3N DE UNIDADES DE TEMPERATURA \u00baC --> \u00baF |==\")\r\nCelsius = int(input(\"Qu\u00e9 quieres convertir? \"))\r\nFarenheit = (9 * (Celsius + 32)) / 5\r\nprint(f'')\r\nprint(\"Dejame pensar...\")\r\ntime.sleep(1.5)\r\nprint(f'')\r\nprint(f\"{Celsius}\u00baC son lo mismo que {Farenheit}\u00baF\")",
+    "timestamp": "20241008_230545"
+}

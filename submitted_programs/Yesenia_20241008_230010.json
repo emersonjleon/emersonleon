@@ -1,0 +1,6 @@
+{
+    "name": "Yesenia",
+    "description": "Programa que te ayuda a saber si un n\u00famero es par o no!",
+    "code": "\r\nnumero =  int(input(\"ingrese un numero: \"))\r\n\r\nif numero % 2 == 0:\r\n  print(f\"El n\u00famero {numero} es par.\")\r\nelse:\r\n  print(f\"El n\u00famero {numero} es impar.\")",
+    "timestamp": "20241008_230010"
+}

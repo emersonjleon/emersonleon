@@ -1,0 +1,6 @@
+{
+    "name": "Edy Socha",
+    "description": "este codigo es de olimpiadas de programcion y l oque haces es que con cualqueir numero impar imprime una cruz",
+    "code": "#imprime un + (m\u00e1s)\r\nx= int(input())\r\nfor i in range(x-1):\r\n    if i ==int(x/2):\r\n        print('*'*x)\r\n    else:\r\n        pass    \r\n    print('{:^{}}'.format('*',x))\r\n  ",
+    "timestamp": "20241008_225319"
+}

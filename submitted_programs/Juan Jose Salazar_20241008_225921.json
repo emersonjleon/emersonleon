@@ -1,0 +1,6 @@
+{
+    "name": "Juan Jose Salazar",
+    "description": "ejercisios matematicos",
+    "code": "#Escr\u00edbe aqu\u00ed tu c\u00f3digo!\r\nimport random\r\nx1 =random.randint(15,35)\r\nx2 =random.randint(15,35)\r\nsuma= x1+x2\r\nmultiplicacion=x1*x2\r\nprint('escibe dos numeros que sumados den '+str(suma)+' y multiplicados den '+str(multiplicacion))\r\nx = int(input('x= '))\r\ny = int(input('y= '))\r\nif x+y==suma and x*y==multiplicacion:\r\n  print('muy bien')\r\nelse:\r\n  print('muy mal')",
+    "timestamp": "20241008_225921"
+}

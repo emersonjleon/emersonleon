@@ -1,0 +1,6 @@
+{
+    "name": "jaisa",
+    "description": "lista de peliculas y lo que se puede hacer con ella",
+    "code": "peliculas= []\r\npeliculas.append(\"mean girls\")\r\npeliculas.append(\"twilight\")\r\npeliculas.append(\"the platform\")\r\npeliculas.append(\"grown ups\")\r\nprint(peliculas)\r\nlongitud_peliculas=len(peliculas)\r\nprint(longitud_peliculas)\r\nesta_en_la_lista=\"twilight\" in peliculas\r\nprint(esta_en_la_lista)\r\npeliculas.sort()\r\nprint(peliculas)\r\nultimo_elemento=peliculas[-1]\r\nprint(ultimo_elemento)\r\npeliculas.remove(\"the platform\")\r\nprint(peliculas)",
+    "timestamp": "20241008_233114"
+}

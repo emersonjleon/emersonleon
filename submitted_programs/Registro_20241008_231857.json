@@ -1,0 +1,6 @@
+{
+    "name": "Registro",
+    "description": "Programa que permite obtener un registro civil (No include la cedula)",
+    "code": "#Escr\u00edbe aqu\u00ed tu c\u00f3digo!\r\nnombre = input('Bienvenido, ingrese su nombre: ')\r\napellido = input('Ingrese su apellido: ')\r\nedad = int(input('Ingrese su edad: '))\r\nprint()\r\nprint('Nombre:', nombre)\r\nprint('Apellido:', apellido)\r\nprint('Edad:', edad)\r\nif edad < 18:\r\n  print('Menor de edad')\r\nif edad >= 18:\r\n  print('Mayor de edad')",
+    "timestamp": "20241008_231857"
+}
