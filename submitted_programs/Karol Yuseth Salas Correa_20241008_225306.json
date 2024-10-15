@@ -1,6 +1,0 @@
-{
-    "name": "Karol Yuseth Salas Correa",
-    "description": "imprime la tabla del 3, ",
-    "code": "print(\"Tabla de multiplicar del 3 :)\")\r\n\r\nfor i in range(51):\r\n    resultado = 3\r\n    print(f\"3 x {i}\u00a0=\u00a0{resultad\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\no}\")",
-    "timestamp": "20241008_225306"
-}

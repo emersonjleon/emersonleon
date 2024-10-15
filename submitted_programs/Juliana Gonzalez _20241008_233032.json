@@ -1,6 +1,0 @@
-{
-    "name": "Juliana Gonzalez ",
-    "description": "Su trabajo es promediar tres notas acad\u00e9micas, teniendo en cuenta las condiciones",
-    "code": "#Saca tu promedio en notas academicas\r\n\r\nNota1 = int(input(\"Dame tu primera nota:  \"))\r\nwhile int(Nota1) >= 11:\r\n     print(\"El valor no es valido\")\r\n     Nota1 = int(input(\"Dame tu primera nota:  \"))\r\n     \r\nNota2 = int(input(\"Dame tu segunda nota:  \"))\r\nwhile int(Nota2) >= 11:\r\n     print(\"El valor no es valido\")\r\n     Nota2 = int(input(\"Dame tu segunda nota:  \"))\r\n     \r\nNota3 = int(input(\"Dame tu tercera nota:  \"))\r\nwhile int(Nota3) >= 11:\r\n     print(\"El valor no es valido\")\r\n     Nota3 = int(input(\"Dame tu tercera nota:  \"))\r\n\r\nSumatoria = int(Nota1)+int(Nota2)+int(Nota3)\r\nPromedio = int(Sumatoria) / 3\r\n\r\nprint(\" \")\r\nprint (\"Tu primera nota es:  \", Nota1)\r\nprint (\"Tu segunda nota es:  \", Nota2)\r\nprint (\"Tu tercera nota es:  \", Nota3)\r\nprint (\"Tu promedio es:  \", Promedio)",
-    "timestamp": "20241008_233032"
-}

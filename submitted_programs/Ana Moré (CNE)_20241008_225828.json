@@ -1,6 +1,0 @@
-{
-    "name": "Ana Mor\u00e9 (CNE)",
-    "description": "Un programa para administrar las compras, algo simple pero bueno",
-    "code": "lista = [\"CocaCola\",\"papitas\",\"salsa\",\"frutas\"]\r\nlista.append(\"agua\")\r\nprint(lista)\r\n\r\n",
-    "timestamp": "20241008_225828"
-}

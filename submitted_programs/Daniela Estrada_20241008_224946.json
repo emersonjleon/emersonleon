@@ -1,6 +1,0 @@
-{
-    "name": "Daniela Estrada",
-    "description": "identificar las maneras de organizar una palabra sobre la otra para un crucigrama",
-    "code": "#identificar las maneras de organizar una palabra sobre la otra para un crucigrama\r\ntexto_1 = input(\"primera palabra: \")\r\ntexto_2 = input(\"segunda palabra: \")\r\n\r\nposibilidades = int(0)\r\n\r\n#revisar las posibilidades\r\nfor i in range(len(texto_1)):\r\n  for j in range(len(texto_2)):\r\n    if texto_1[i] == texto_2[j]:\r\n      posibilidades = posibilidades + 1\r\n\r\nprint(f'el numero de maneras de organizar las palabras es: {posibilidades}')",
-    "timestamp": "20241008_224946"
-}

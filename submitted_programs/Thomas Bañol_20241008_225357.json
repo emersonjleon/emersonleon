@@ -1,6 +1,0 @@
-{
-    "name": "Thomas Ba\u00f1ol",
-    "description": "un programa en el que te pregunta si ya lavaste y dependiendo si respuesta te responde y tambi\u00e9n pregunta tu edad y te dice si eres mayor o menor de edad",
-    "code": "print (\"puedes jugar futboll si ya lavaste la ropa\")\r\nrespuesta = input (\"\u00bfya lavaste la ropa?\")\r\nif respuesta == \"si\": \r\n  print(\"puedes salir a jugar\")\r\nelif respuesta == \"no\":\r\n  print(\"no puedes salir a jugar\")\r\nprint(\"eres mayor de edad?\")\r\nedad = input (\"cuantos a\u00f1os tienes\")\r\nif int(edad) >= 18 :\r\n  print(\"eres mayor de edad\")\r\nelif int(edad) < 18:\r\n  print (\"eres menor de edad\")",
-    "timestamp": "20241008_225357"
-}

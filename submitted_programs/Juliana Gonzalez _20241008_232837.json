@@ -1,6 +1,0 @@
-{
-    "name": "Juliana Gonzalez ",
-    "description": "Su trabajo es promediar tres notas acad\u00e9micas. ",
-    "code": "Nota1 = int(input(\"Dame tu primera nota:  \"))\r\nNota2 = int(input(\"Dame tu segunda nota:  \"))\r\nNota3 = int(input(\"Dame tu tercera nota:  \"))\r\n\r\nSumatoria = int(Nota1)+int(Nota2)+int(Nota3)\r\nPromedio = int(Sumatoria) / 3\r\nprint (\"Tu promedio es:\", Promedio)",
-    "timestamp": "20241008_232837"
-}

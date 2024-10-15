@@ -1,6 +1,0 @@
-{
-    "name": "Camilo Cruz",
-    "description": "Juego de adivinar un numero al azar",
-    "code": "import random\r\nnumero = random.randint(1, 100)\r\nprint(\"\u00a1Bienvenido al juego de adivinar el n\u00famero!\")\r\nwhile intento != numero:\r\n    intento = int(input(\"Adivina el n\u00famero: \"))\r\n    if intento < numero:\r\n      print(\"El numero es mayor\")\r\n    elif intento > numero:\r\n      print(\"El numero es menor\")\r\n    else:\r\n      print(f\"!Felicidades\u00a1 el numero es {numero}\")",
-    "timestamp": "20241008_231112"
-}

@@ -1,6 +1,0 @@
-{
-    "name": "Saii Monje Soler",
-    "description": "Verificar si el n\u00famero es par o impar",
-    "code": "numero=int(input('introduce un numero'))\r\ndef es_numero(valor):\r\n    try:\r\n        float(valor)  # Intenta convertir a n\u00famero\r\n        return True\r\n    except ValueError:\r\n        return False\r\n\r\n# Solicitar un valor al usuario\r\nentrada = input(\"Introduce un n\u00famero: \")\r\n\r\n# Verificar si es un n\u00famero\r\nif es_numero(entrada):\r\n    numero = float(entrada)  # Convertir a n\u00famero\r\n    # Verificar si el n\u00famero es par o impar\r\n    if numero % 2 == 0:\r\n        print(f\"{numero} es un n\u00famero par.\")\r\n    else:\r\n        print(f\"{numero} es un n\u00famero impar.\")\r\nelse:\r\n    print(\"La entrada no es un n\u00famero v\u00e1lido.\")",
-    "timestamp": "20241008_232345"
-}

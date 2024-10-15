@@ -1,6 +1,0 @@
-{
-    "name": "Jacobo",
-    "description": "Nombre y edad",
-    "code": "Nombre=str(input(\"Escriba su nombre: \"))\r\nEdad=int(input(\"Escriba su edad: \"))\r\nprint(\"Hola, \"+Nombre, \"Usted tiene, \"+str(Edad))",
-    "timestamp": "20241008_225532"
-}

@@ -1,6 +1,0 @@
-{
-    "name": "Manuel Roa",
-    "description": "Dibujo sencillo",
-    "code": "texto = input(\"Hola, quieres ver mi dibujo: \")\r\nif texto == \"si\" :\r\n    print(\"//////////////////\")\r\n    print(\"/                /\")\r\n    print(\"/    //   //     /\")\r\n    print(\"/                /\")\r\n    print(\"/   /       /    /\")\r\n    print(\"/    ///////     /\")\r\n    print(\"/                /\")\r\n    print(\"//////////////////\")\r\nelif texto == \"no\" :\r\n    print(\"Bueno, te quedas con la curiosidad\")",
-    "timestamp": "20241008_225640"
-}

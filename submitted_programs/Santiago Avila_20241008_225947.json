@@ -1,6 +1,0 @@
-{
-    "name": "Santiago Avila",
-    "description": "Una calculadora b\u00e1sica, con solo 4 funciones, que se repite en bucle para hacer las operaciones b\u00e1sicas que necesite manteniendo el resultado anterior. En el caso de querer cerrar el programa, escribir la palabra \"salir\".",
-    "code": "print('Bienvenidos a la calculadora!!')\r\nprint('Para salir escriba salir')\r\nprint('Las operaciones son suma, multi, div y resta')\r\n\r\nresultado = ''\r\nwhile True:\r\n    if not resultado:\r\n        resultado = input('Ingrese un n\u00famero: ')\r\n        if resultado.lower() == 'salir':\r\n            print('Cerrando Calculadora')\r\n            break\r\n        resultado = float(resultado)\r\n    op = input('Ingresa la operaci\u00f3n: ')\r\n    if op.lower() == 'salir':\r\n        break\r\n    n2 = input('Ingrese el siguiente n\u00famero: ')\r\n    if n2.lower() == 'salir':\r\n        break\r\n    n2 = float(n2)\r\n\r\n    if op.lower() == 'suma':\r\n        resultado += n2\r\n    elif op.lower() == 'resta':\r\n        resultado -= n2\r\n    elif op.lower() == 'multi':\r\n        resultado *= n2\r\n    elif op.lower() == 'div':\r\n        resultado /= n2\r\n    else:\r\n        print('Operaci\u00f3n no v\u00e1lida')\r\n        break\r\n\r\n    print(f'El resultado es: {resultado}')\r\n",
-    "timestamp": "20241008_225947"
-}

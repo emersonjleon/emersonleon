@@ -230,7 +230,7 @@ def submit_code():
 
         # Guardar todos los programas en un archivo JSON
         all_programs_file_path = os.path.join(directory, "all_programs.json")
-        with open(all_programs_file_path, 'w') as all_file:
+        with open(all_programs_file_path, 'a') as all_file:
             json.dump(all_programs, all_file, indent=4)
 
         # Devolver una respuesta de éxito

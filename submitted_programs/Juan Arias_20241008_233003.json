@@ -1,6 +1,0 @@
-{
-    "name": "Juan Arias",
-    "description": "es un programa que te pide un numero entre 1 y 27 segun este numero te va a dar una palabra",
-    "code": "abc={\r\n    1:'arepa',\r\n    2:'bacano',\r\n    3:'chimba',\r\n    4:'desparche',\r\n    5:'empanada',\r\n    6:'finca',\r\n    7:'guayabo',\r\n    8:'harto',\r\n    9:'iman',\r\n    10:'joda',\r\n    11:'karma',\r\n    12:'ladr\u00f3n',\r\n    13:'man',\r\n    14:'nuevo',\r\n    15:'\u00f1ero',\r\n    16:'ojo',\r\n    17:'paila',\r\n    18:'qhubo',\r\n    19:'rata',\r\n    20:'sapo',\r\n    21:'tinto',\r\n    22:'urbe',\r\n    23:'vago',\r\n    24:'wasqueado',\r\n    25:'x-men',\r\n    26:'yuca',\r\n    27:'zancudo',\r\n}\r\na=int(input(\"ingrese un n\u00famero entre 1 y 27: \"))\r\nb=abc.get(a,'')\r\nif (0<a<28):\r\n    print(b)\r\nelif():\r\n    print(\"ponete serio\")",
-    "timestamp": "20241008_233003"
-}

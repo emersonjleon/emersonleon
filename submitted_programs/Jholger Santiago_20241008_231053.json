@@ -1,6 +1,0 @@
-{
-    "name": "Jholger Santiago",
-    "description": "Juego de adivinar el numero",
-    "code": "import random\r\n\r\nintentos = 0\r\nadivinanza = False\r\n\r\nprint(\"Bienvenido al juego de adivinar el numero\")\r\nprint(\"Selecciona la dificultad\")\r\nprint(\"1. Facil\")\r\nprint(\"2. Medio\")\r\nprint(\"3. Dificil\")\r\ndificultad=int(input(\"Ingresa el numero de dificultad que desees: \"))\r\nwhile dificultad<1 or dificultad>3:\r\n    print(\"Opcion no valida\")\r\n    dificultad=int(input(\"Ingresa el numero de dificultad que desees: \"))\r\nif dificultad==1:\r\n    numero_secreto=random.randint(1,10)\r\nelif dificultad==2:\r\n    numero_secreto=random.randint(1,100)\r\nelse:\r\n    numero_secreto = random.randint(1, 1000)\r\nwhile adivinanza == False:\r\n    numero_ingresado = int(input(\"Ingrese un numero: \"))\r\n    intentos += 1\r\n    if numero_ingresado == numero_secreto:\r\n        adivinanza = True\r\n        print(f\"\u00a1Felicidades! Adivinaste el numero en {intentos} intentos.\")\r\n    else:\r\n        if numero_ingresado < numero_secreto:\r\n            print(\"El numero ingresado es menor al numero secreto\")\r\n        else:\r\n            print(\"El numero ingresado es mayor al numero secreto\")\r\n",
-    "timestamp": "20241008_231053"
-}

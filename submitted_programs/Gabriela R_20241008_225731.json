@@ -1,6 +1,0 @@
-{
-    "name": "Gabriela R",
-    "description": "ejemplo de calculadora de imc (busqu\u00e9 en google cu\u00e1ndo es un imc sano y cuando no lo es)",
-    "code": "masa = float(input ('Introduce tu masa en kg '))\r\naltura = float(input ('Introduce tu altura en m '))\r\nprint ('Tu IMC es de', round(masa/(altura*altura),2))\r\nif masa/(altura*altura) >=18.5<=24.9:\r\n  print ('Tu \u00edndice de masa corporal es sano')\r\nelse:\r\n  print ('Tu \u00edndice de masa corporal no es sano')",
-    "timestamp": "20241008_225731"
-}
