@@ -1,0 +1,6 @@
+{
+    "name": "Juan Jose Leal 10D CBP",
+    "description": "dibujo simplificado de una ciudad",
+    "code": "import matplotlib.pyplot as plt\r\nimport numpy as np\r\n\r\n# Crear la figura y los ejes\r\nfig, ax = plt.subplots()\r\n\r\n# Dibujar el cielo\r\nax.set_facecolor('skyblue')\r\n\r\n# Dibujar edificios (rect\u00e1ngulos)\r\nedificios = [\r\n    [1, 1, 1, 4],\r\n    [2.5, 1, 1, 5],\r\n    [4, 1, 1.5, 3],\r\n    [6, 1, 2, 6],\r\n    [9, 1, 1.5, 4],\r\n]\r\n\r\nfor edificio in edificios:\r\n    rect = plt.Rectangle((edificio[0], edificio[1]), edificio[2], edificio[3], color='gray')\r\n    ax.add_patch(rect)\r\n\r\n# Configurar l\u00edmites y mostrar\r\nax.set_xlim(0, 12)\r\nax.set_ylim(0, 7)\r\nplt.show()\r\n",
+    "timestamp": "20241015_235348"
+}
