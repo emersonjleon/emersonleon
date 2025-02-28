@@ -180,7 +180,7 @@ def iapage():
 
 ####################
 @app.route("/uan/2025/matematicadiscreta", methods=("GET", "POST"))
-def temas2024page():
+def md2025page():
     return render_template("uan/juegosygrafos/juegos2025.html")
 
 
