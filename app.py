@@ -183,6 +183,10 @@ def iapage():
 def md2025page():
     return render_template("uan/juegosygrafos/juegos2025.html")
 
+@app.route("/uan/2025/combiprob", methods=("GET", "POST"))
+def md2025page():
+    return render_template("uan/combiprob/2025-2.html")
+
 
 ###################
 @app.route("/uan/temas2024/temas", methods=("GET", "POST"))
