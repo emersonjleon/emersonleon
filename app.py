@@ -57,7 +57,10 @@ def guardarSesionActual(name='*unsaved '):
 
 
 
-
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'icos.png', mimetype='image/png')
 
     
 
@@ -183,7 +186,7 @@ def iapage():
 def md2025page():
     return render_template("uan/juegosygrafos/juegos2025.html")
 
-@app.route("/uan/2025/combiprob", methods=("GET", "POST"))
+@app.route("/uan/2025/combinatoria", methods=("GET", "POST"))
 def combiprobpage():
     return render_template("uan/combiprob/2025-2.html")
 
