@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <div class="w3-container center">
     <head>
-      <title>Matemática Discreta: Teoría de Juegos y Grafos</title>
-      <link     rel="shortcut icon"  type="image/png"     href="{{ url_for('static', filename='icos.png') }}"  />
+      <title>Combinatoria y Probabilidad</title>
+      <link     rel="shortcut icon"  type="image/png"     href="https://emersonjleon.pythonanywhere.com/static/icos.png"  />
       <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
     </head>
     <!-- <style> -->
@@ -98,9 +98,20 @@
 	      	  <li> Lista soluciones (por Hector Escamilla):	  <a href="https://emersonjleon.github.io/emersonjleon/math/uan/Cafe-HectorEscamilla.png">link</a>      	  </li>
 	      	</ul>
 	      </li>
-	      <li><strong>30 de agosto:</strong> Relaciones de Recurrencia</li>
-        <li><strong>6 de septiembre:</strong> </li> 
-        <li><strong>13 de septiembre:</strong> </li>
+	      <li><strong>30 de agosto:</strong> Principio de Inclusión y exclusión</li>
+        <li><strong>6 de septiembre:</strong> Relaciones de Recurrencia</li> 
+              <li><strong>13 de septiembre:</strong>Resolviendo Problemas Retadores
+		<ul>
+	      	  <li> Tarea 1:	        	    <a id="toggleLink" onclick="toggleDescripcion()">Ver descripción</a>
+  
+		    <div id="descripcion" class="descripcion">
+		      Esta es la descripción detallada de la tarea. Aquí puedes escribir instrucciones, notas importantes o lo que necesites.
+		    </div>
+		  </li>
+		</ul>
+	
+		
+	      </li>
         <li><strong>20 de septiembre:</strong> </li>
         <li><strong>27 de septiembre:</strong> </li>
         <li><strong>4 de octubre:</strong> </li>
@@ -178,8 +189,28 @@
     }
   </style>
 
+  <script>
+    function toggleDescripcion() {
+      const desc = document.getElementById("descripcion");
+      const link = document.getElementById("toggleLink");
+
+      if (desc.style.display === "none") {
+        desc.style.display = "block";
+        link.textContent = "Ocultar descripción";
+      } else {
+        desc.style.display = "none";
+        link.textContent = "Ver descripción";
+      }
+    }
+  </script>
+
+  
+
 <script src="https://ajax.googleapis.com/ajax/libs/threejs/r76/three.min.js">
 </script>
+
+
+
 
 		
 <script>
