@@ -169,8 +169,8 @@
     <tr>
       <td class="nombre"><a href="https://emersonjleon.github.io/emersonjleon/uan/combinatoria/juan_carlos_cardozo.pdf">Juan Carlos Cardozo</a></td>
       <td class="cross">✘</td>
-      <td class="check">✔</td>
-      <td class="check">✔</td>
+      <td class="cross">✘</td>
+      <td class="cross">✘</td>
     </tr>
     <tr>
       <td class="nombre"><a href="https://emersonjleon.github.io/emersonjleon/uan/combinatoria/hector_escamilla.pdf">Héctor Fabián Escamilla</a></td>
@@ -292,16 +292,18 @@
   </style>
 
   <script>
-    function toggleDescripcion() {
       const desc = document.getElementById("descripcion");
       const link = document.getElementById("toggleLink");
+	desc.style.display == "none"
 
+    function toggleDescripcion() {
+	
       if (desc.style.display === "none") {
         desc.style.display = "block";
         link.textContent = "Ocultar";
       } else {
         desc.style.display = "none";
-        link.textContent = "Mostrar";
+        link.textContent = "Mostrar Problemas";
       }
     }
   </script>
