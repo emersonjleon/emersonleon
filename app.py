@@ -204,6 +204,14 @@ def materialtemas2024page():
 def semillero2024():
     return render_template("uan/semillero/home.html")
 
+
+#############
+@app.route("/uan/semillero2025", methods=("GET", "POST"))
+def semillero2025():
+    return render_template("uan/semillero/semillero2025.html")
+
+
+
 @app.route("/uan/codeinput", methods=("GET", "POST"))
 def submit_code():
     all_programs=[]
