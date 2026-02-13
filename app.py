@@ -190,6 +190,9 @@ def md2025page():
 def combiprobpage():
     return render_template("uan/combiprob/2025-2.html")
 
+@app.route("/uan/2026/matematicadiscreta", methods=("GET", "POST"))
+def md2026page():
+    return render_template("uan/juegosygrafos/juegos2026.html")
 
 ###################
 @app.route("/uan/temas2024/temas", methods=("GET", "POST"))
