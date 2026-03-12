@@ -62,6 +62,48 @@ def threejsSpheresText(spheres, objectname="mySpheres", radius='None'):
     return text+f'\n  scene.add({objectname});'
 
 
+def threejsSpheresTextFiltered(spheres, coord_index=2, threshold=0,
+                               objectname="mySpheres", radius='None'):
+    """
+    Genera código three.js para todas las esferas y añade funciones JS
+    para poder filtrar en el navegador qué esferas son visibles según
+    una coordenada (x,y,z) y un umbral.
+    """
+    base = threejsSpheresText(spheres, objectname=objectname, radius=radius)
+    extra = f"""
+var filterCoordIndex = {coord_index};
+var filterThreshold = {threshold};
+
+function setFilterCoordIndex(idx) {{
+    filterCoordIndex = idx;
+    applyFilter();
+}}
+
+function setFilterThreshold(t) {{
+    filterThreshold = t;
+    applyFilter();
+}}
+
+function applyFilter() {{
+    for (var i = 0; i < {objectname}.children.length; i++) {{
+        var s = {objectname}.children[i];
+        var coordValue;
+        if (filterCoordIndex === 0) {{
+            coordValue = s.position.x;
+        }} else if (filterCoordIndex === 1) {{
+            coordValue = s.position.y;
+        }} else {{
+            coordValue = s.position.z;
+        }}
+        s.visible = (coordValue < filterThreshold);
+    }}
+}}
+
+applyFilter();
+"""
+    return base + extra
+
+
 def chipfiringVisual(matrix, colorlist, spaces=20, scale=1, objectname="mySpheres"):
 
     mytext=f"""

@@ -1,0 +1,120 @@
+<!doctype html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Visualización filtrable</h2>
+
+<div>
+  <label for="coordSelect">Coordenada:</label>
+  <select id="coordSelect">
+    <option value="0">x</option>
+    <option value="1">y</option>
+    <option value="2">z</option>
+  </select>
+
+  <label for="thresholdInput">Umbral:</label>
+  <input id="thresholdInput" type="range" min="-200" max="200" step="10" value="0">
+  <span id="thresholdValue">0</span>
+</div>
+
+<div id="canvas"></div>
+
+<style>
+#canvas {
+    background-color: #000;
+    width: {{ width }}px;
+    height: {{ height }}px;
+    border: 1px solid black;
+    margin: 10px 0;
+    padding: 0;
+    position: static;
+    top: 10px;
+    left: 10px;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r76/three.min.js"></script>
+
+<script>
+  var container = document.getElementById('canvas');
+  var renderer = new THREE.WebGLRenderer();
+  var w = {{ width }};
+  var h = {{ height }};
+  renderer.setSize(w, h);
+  container.appendChild(renderer.domElement);
+
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x000000);
+
+  var VIEW_ANGLE = 65,
+      ASPECT = w / h,
+      NEAR = 0.1,
+      FAR = 1000;
+
+  var camera = new THREE.PerspectiveCamera(
+      VIEW_ANGLE,
+      ASPECT,
+      NEAR,
+      FAR
+  );
+
+  camera.position.z = 600;
+
+  var lambertmaterial = new THREE.MeshLambertMaterial({ color: 0x555555 });
+
+  // Código generado en Python: crea mySpheres y helpers de filtrado
+  {{ spheresText | safe }}
+
+  var ambient = new THREE.AmbientLight(0xeeeedd, 0.7);
+  scene.add(ambient);
+
+  var pointLight = new THREE.PointLight(0x999999);
+  pointLight.position.set(10, 50, 130);
+  scene.add(pointLight);
+
+  var pointLight2 = new THREE.PointLight(0x888888);
+  pointLight2.position.set(-50, -50, 130);
+  scene.add(pointLight2);
+
+  // Controles HTML -> funciones JS generadas en spheresText
+  var coordSelect = document.getElementById('coordSelect');
+  var thresholdInput = document.getElementById('thresholdInput');
+  var thresholdValue = document.getElementById('thresholdValue');
+
+  coordSelect.addEventListener('change', function () {
+      var idx = parseInt(this.value);
+      if (typeof setFilterCoordIndex === 'function') {
+          setFilterCoordIndex(idx);
+      }
+  });
+
+  thresholdInput.addEventListener('input', function () {
+      var t = parseFloat(this.value);
+      thresholdValue.textContent = t;
+      if (typeof setFilterThreshold === 'function') {
+          setFilterThreshold(t);
+      }
+  });
+
+  // Inicializar con los valores actuales del control
+  if (typeof setFilterCoordIndex === 'function') {
+      setFilterCoordIndex(parseInt(coordSelect.value));
+  }
+  if (typeof setFilterThreshold === 'function') {
+      setFilterThreshold(parseFloat(thresholdInput.value));
+  }
+
+  var render = function () {
+      requestAnimationFrame(render);
+      if (typeof mySpheres !== 'undefined') {
+          mySpheres.rotation.y += 0.002;
+      }
+      renderer.render(scene, camera);
+  };
+
+  render();
+</script>
+
+{% endblock %}
+
