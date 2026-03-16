@@ -402,7 +402,7 @@ def buscar_estudiante(nombre, correo, fecha, telefono):
 
 
 @app.route('/onia2026', methods=['GET', 'POST'])
-def index():
+def onia2026():
     clave_encontrada = None
     if request.method == 'POST':
         #nombre = request.form.get('nombre')
