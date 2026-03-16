@@ -366,7 +366,9 @@ def chipfiringvisualize(chipstring):
                            figure=figure)
 
 
-#######################################################################
+####################################################################
+# ONIA 2026
+####################################################################
 
 #import os
 #from flask import Flask, render_template, request, flash
@@ -379,7 +381,7 @@ app.secret_key = "clave_secreta_onia" # Necesario para mostrar mensajes
 
 
 # Cargar base de datos
-def buscar_estudiante(nombre, correo, fecha, telefono):
+def buscar_estudiante(correo, fecha, telefono):
     try:
         df = pd.read_csv('onia2026keys.csv')
         # Limpieza básica de espacios
@@ -394,7 +396,7 @@ def buscar_estudiante(nombre, correo, fecha, telefono):
         ]
         
         if not resultado.empty:
-            return resultado.iloc[0]['clave']
+            return resultado.iloc[0]['nombre'], resultado.iloc[0]['clave']
         return None
     except Exception as e:
         print(f"Error: {e}")
@@ -416,7 +418,7 @@ def onia2026():
         
         telefono = request.form.get('telefono')
         
-        clave_encontrada = buscar_estudiante(nombre, correo, fecha_completa, telefono)
+        nombre_encontrado, clave_encontrada = buscar_estudiante(correo, fecha_completa, telefono)
         
         if not clave_encontrada:
             flash("No coinciden los datos. Revisa mayúsculas, minúsculas y espacios.", "error")

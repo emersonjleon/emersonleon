@@ -79,17 +79,17 @@
 <body>
 
 <div class="container">
-    <img src="{{ url_for('static', filename='logo_onia.png') }}" alt="Logo ONIA" class="logo">
+    <img src="{{ url_for('static', filename='logoIA.png') }}" alt="Logo ONIA" class="logo">
     
     {% if not clave %}
     <h2>Validar Identidad</h2>
     <p style="font-size: 0.9rem; opacity: 0.7;">Ingresa tus datos tal como los registraste.</p>
     
     <form method="POST">
-        <div class="input-group">
-            <label>NOMBRE COMPLETO</label>
-            <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
-        </div>
+        <!-- <div class="input-group"> -->
+        <!--     <label>NOMBRE COMPLETO</label> -->
+        <!--     <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required> -->
+        <!-- </div> -->
         <div class="input-group">
             <label>CORREO ELECTRÓNICO</label>
             <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
