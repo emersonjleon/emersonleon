@@ -368,8 +368,9 @@ def chipfiringvisualize(chipstring):
 
 #######################################################################
 
+#import os
 #from flask import Flask, render_template, request, flash
-from flask import  flash
+from flask import  flash, send_from_directory 
 import pandas as pd
 
 #app = Flask(__name__)
@@ -386,7 +387,7 @@ def buscar_estudiante(nombre, correo, fecha, telefono):
         
         # Filtro de coincidencia
         resultado = df[
-            (df['nombre'].str.lower() == nombre.lower()) &
+            #(df['nombre'].str.lower() == nombre.lower()) &
             (df['correo'].str.lower() == correo.lower()) &
             (df['fecha_nacimiento'] == fecha) &
             (df['telefono'] == telefono)
