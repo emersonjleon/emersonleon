@@ -383,7 +383,7 @@ app.secret_key = "clave_secreta_onia" # Necesario para mostrar mensajes
 # Cargar base de datos
 def buscar_estudiante(correo, fecha, telefono):
     try:
-        df = pd.read_csv('onia2026keys.csv')
+        df = pd.read_csv('onia/onia2026keys.csv')
         # Limpieza básica de espacios
         df = df.apply(lambda x: x.astype(str).str.strip())
         
