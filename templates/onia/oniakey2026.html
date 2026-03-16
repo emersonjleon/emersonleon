@@ -35,6 +35,7 @@
         .logo { width: 120px; margin-bottom: 20px; }
         h2 { margin-bottom: 10px; font-weight: 300; letter-spacing: 1px; }
         .input-group { text-align: left; margin-bottom: 15px; }
+        /* h4 { margin-bottom: 10px; font-weight: 100; letter-spacing: 1px; } */
         label { display: block; font-size: 0.8rem; color: var(--primary); margin-bottom: 5px; }
         input {
             width: 100%;
@@ -82,7 +83,8 @@
     <img src="{{ url_for('static', filename='logoIA.png') }}" alt="Logo ONIA" class="logo">
     
     {% if not clave %}
-    <h2>Validar Identidad</h2>
+    <h2>Olimpiada Nacional de IA</h2>
+    <h4>Validar Identidad</h4>
     <p style="font-size: 0.9rem; opacity: 0.7;">Ingresa tus datos tal como los registraste.</p>
     
     <form method="POST">
@@ -92,7 +94,7 @@
         <!-- </div> -->
         <div class="input-group">
             <label>CORREO ELECTRÓNICO</label>
-            <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
+            <input type="email" name="correo" placeholder="ejemplo@correo.com (donde recibiste esta notificación)" required>
         </div>
         <div class="input-group">
             <label>FECHA DE NACIMIENTO</label>
@@ -104,7 +106,7 @@
         </div>
         <div class="input-group">
             <label>TELÉFONO</label>
-            <input type="text" name="telefono" placeholder="10 dígitos" required>
+            <input type="text" name="telefono" placeholder="ingresar sólo 10 dígitos" required>
         </div>
         
         {% with messages = get_flashed_messages() %}
@@ -117,22 +119,25 @@
     </form>
 
     {% else %}
-    <h2>¡Hola de nuevo!</h2>
     <div class="clave-box">
         <p style="margin: 0; font-size: 0.8rem;">TU CLAVE DE ACCESO ES:</p>
         <h1 style="margin: 10px 0; color: var(--primary); letter-spacing: 3px;">{{ clave }}</h1>
     </div>
+
+    <h4>Esta clave es necesaria para participar en las diferentes rondas de la olimpiada. Recuérdala o de lo contrario tendras que volver a consultarla aquí.</h4>
+
     
-    <a href="https://eduspace.com.mx/onia" target="_blank" style="text-decoration: none;">
+    <a href="https://olimpicoespanol.eduspace.com.br/users/sign_in" target="_blank" style="text-decoration: none;">
         <button>ACCEDER A LA OLIMPIADA</button>
     </a>
 
     <div style="margin-top: 40px; text-align: left; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
         <h4 style="color: var(--primary);">Pasos para participar:</h4>
-        <p style="font-size: 0.8rem;">1. Haz clic en el botón superior y busca el botón de ingreso.</p>
-        
-        
-        <p style="font-size: 0.8rem; margin-top: 15px;">2. Una vez dentro, verás tu panel de retos de IA.</p>
+        <p style="font-size: 0.8rem;">1. Copia la clave que acabamos de entregarte.</p>
+        <p style="font-size: 0.8rem;">2. Haz clic en el botón superior para 'Acceder a la Olimpiada'.</p>
+        <p style="font-size: 0.8rem; margin-top: 15px;">3. Una vez dentro, en <bf>Área de acesso à plataforma</bf> dale click a <bf>Acceder vía token educacional</bf>.</p>
+	<p style="font-size: 0.8rem; margin-top: 15px;">4. Ingresa el token copiado y entra.</p>
+	<p style="font-size: 0.8rem; margin-top: 15px;">5.  Puedes comenzar la prueba <bf>[Colombia] - 1º round</bf> dando click en <bf>Iniciar prova</bf>.</p>
         
     </div>
     {% endif %}
