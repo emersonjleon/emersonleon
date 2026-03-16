@@ -396,7 +396,7 @@ def buscar_estudiante(correo, fecha, telefono):
         ]
         
         if not resultado.empty:
-            return resultado.iloc[0]['nombre'], resultado.iloc[0]['clave']
+            return  resultado.iloc[0]['clave']
         return None
     except Exception as e:
         print(f"Error: {e}")
@@ -418,7 +418,7 @@ def onia2026():
         
         telefono = request.form.get('telefono')
         
-        nombre_encontrado, clave_encontrada = buscar_estudiante(correo, fecha_completa, telefono)
+        clave_encontrada = buscar_estudiante(correo, fecha_completa, telefono)
         
         if not clave_encontrada:
             flash("No coinciden los datos. Revisa mayúsculas, minúsculas y espacios.", "error")
