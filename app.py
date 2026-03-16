@@ -366,6 +366,61 @@ def chipfiringvisualize(chipstring):
                            figure=figure)
 
 
+#######################################################################
+
+#from flask import Flask, render_template, request, flash
+from flask import  flash
+import pandas as pd
+
+#app = Flask(__name__)
+app.secret_key = "clave_secreta_onia" # Necesario para mostrar mensajes
+
+
+
+# Cargar base de datos
+def buscar_estudiante(nombre, correo, fecha, telefono):
+    try:
+        df = pd.read_csv('onia2026keys.csv')
+        # Limpieza básica de espacios
+        df = df.apply(lambda x: x.astype(str).str.strip())
+        
+        # Filtro de coincidencia
+        resultado = df[
+            (df['nombre'].str.lower() == nombre.lower()) &
+            (df['correo'].str.lower() == correo.lower()) &
+            (df['fecha_nacimiento'] == fecha) &
+            (df['telefono'] == telefono)
+        ]
+        
+        if not resultado.empty:
+            return resultado.iloc[0]['clave']
+        return None
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+
+
+
+@app.route('/onia2026', methods=['GET', 'POST'])
+def index():
+    clave_encontrada = None
+    if request.method == 'POST':
+        #nombre = request.form.get('nombre')
+        correo = request.form.get('correo').lower()
+        # Concatenamos la fecha para que coincida con el formato del CSV (ej: 15/05/2008)
+        dia = request.form.get('dia').zfill(2)
+        mes = request.form.get('mes').zfill(2)
+        anio = request.form.get('anio')
+        fecha_completa = f"{dia}/{mes}/{anio}"
+        
+        telefono = request.form.get('telefono')
+        
+        clave_encontrada = buscar_estudiante(nombre, correo, fecha_completa, telefono)
+        
+        if not clave_encontrada:
+            flash("No coinciden los datos. Revisa mayúsculas, minúsculas y espacios.", "error")
+            
+    return render_template('onia/oniakey2026.html', clave=clave_encontrada)
 
 
 

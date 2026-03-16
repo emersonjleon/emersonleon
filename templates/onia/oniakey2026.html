@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONIA - Validación de Participante</title>
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --dark: #1a1a2e;
+            --white: #ffffff;
+        }
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            color: var(--white);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        .logo { width: 120px; margin-bottom: 20px; }
+        h2 { margin-bottom: 10px; font-weight: 300; letter-spacing: 1px; }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; font-size: 0.8rem; color: var(--primary); margin-bottom: 5px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            box-sizing: border-box;
+        }
+        .date-container { display: flex; gap: 10px; }
+        .date-container input { text-align: center; }
+        button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.02); }
+        .clave-box {
+            background: rgba(0, 210, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px dashed var(--primary);
+            margin: 20px 0;
+        }
+        .screenshot {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .error { color: #ff4d4d; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="{{ url_for('static', filename='logo_onia.png') }}" alt="Logo ONIA" class="logo">
+    
+    {% if not clave %}
+    <h2>Validar Identidad</h2>
+    <p style="font-size: 0.9rem; opacity: 0.7;">Ingresa tus datos tal como los registraste.</p>
+    
+    <form method="POST">
+        <div class="input-group">
+            <label>NOMBRE COMPLETO</label>
+            <input type="text" name="nombre" placeholder="Ej. Juan Pérez" required>
+        </div>
+        <div class="input-group">
+            <label>CORREO ELECTRÓNICO</label>
+            <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
+        </div>
+        <div class="input-group">
+            <label>FECHA DE NACIMIENTO</label>
+            <div class="date-container">
+                <input type="number" name="dia" placeholder="DD" min="1" max="31" required>
+                <input type="number" name="mes" placeholder="MM" min="1" max="12" required>
+                <input type="number" name="anio" placeholder="AAAA" min="1990" max="2020" required>
+            </div>
+        </div>
+        <div class="input-group">
+            <label>TELÉFONO</label>
+            <input type="text" name="telefono" placeholder="10 dígitos" required>
+        </div>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}<p class="error">{{ message }}</p>{% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        <button type="submit">OBTENER MI CLAVE</button>
+    </form>
+
+    {% else %}
+    <h2>¡Hola de nuevo!</h2>
+    <div class="clave-box">
+        <p style="margin: 0; font-size: 0.8rem;">TU CLAVE DE ACCESO ES:</p>
+        <h1 style="margin: 10px 0; color: var(--primary); letter-spacing: 3px;">{{ clave }}</h1>
+    </div>
+    
+    <a href="https://eduspace.com.mx/onia" target="_blank" style="text-decoration: none;">
+        <button>ACCEDER A LA OLIMPIADA</button>
+    </a>
+
+    <div style="margin-top: 40px; text-align: left; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+        <h4 style="color: var(--primary);">Pasos para participar:</h4>
+        <p style="font-size: 0.8rem;">1. Haz clic en el botón superior y busca el botón de ingreso.</p>
+        
+        
+        <p style="font-size: 0.8rem; margin-top: 15px;">2. Una vez dentro, verás tu panel de retos de IA.</p>
+        
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
