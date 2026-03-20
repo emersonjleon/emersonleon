@@ -439,7 +439,7 @@ def onia2026():
         mes = request.form.get('mes').zfill(2)
         anio = request.form.get('anio')
         fecha_completa = f"{dia}/{mes}/{anio}"
-        if fecha_completa=='0':
+        if fecha_completa[0]=='0':
             fecha_completa=fecha_completa[1:]
         
         telefono = request.form.get('telefono')
