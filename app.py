@@ -459,12 +459,16 @@ def onia2026test():
         #nombre = request.form.get('nombre')
         correo = request.form.get('correo').lower()
         # Concatenamos la fecha para que coincida con el formato del CSV (ej: 15/05/2008)
-        dia = request.form.get('dia')
-        mes = request.form.get('mes')#.zfill(2)
+        dia = request.form.get('dia').zfill(2)
+        mes = request.form.get('mes').zfill(2)
         anio = request.form.get('anio')
 
         fecha_completa = f"{dia}/{mes}/{anio}"
         #fecha_completa = datetime.date(int(dia),int(mes),int(anio)) #f"{dia}/{mes}/{anio}"
+        if fecha_completa[0]=='0':
+            fecha_completa=fecha_completa[1:]
+
+
         
         telefono = request.form.get('telefono')
         
