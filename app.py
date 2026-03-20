@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, send_from_directory 
 
 import pickle
 from datetime import datetime, date
@@ -394,7 +394,7 @@ def chipfiringvisualize(chipstring):
 
 #import os
 #from flask import Flask, render_template, request, flash
-from flask import  flash, send_from_directory 
+from flask import  flash
 import pandas as pd
 
 #app = Flask(__name__)
