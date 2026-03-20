@@ -449,7 +449,7 @@ def onia2026():
 
 
 @app.route('/onia2026-test', methods=['GET', 'POST'])
-def onia2026():
+def onia2026test():
     clave_encontrada = None
     if request.method == 'POST':
         #nombre = request.form.get('nombre')
