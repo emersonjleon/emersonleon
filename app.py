@@ -409,13 +409,13 @@ def buscar_estudiante(correo, fecha, telefono):
         # Limpieza básica de espacios
         df = df.apply(lambda x: x.astype(str).str.strip())
 
-        date_object = datetime.strptime(df['fecha_nacimiento'], "%d/%m/%Y").date()
+        #date_object = datetime.strptime(df['fecha_nacimiento'], "%d/%m/%Y").date()
         
         # Filtro de coincidencia
         resultado = df[
             #(df['nombre'].str.lower() == nombre.lower()) &
             (df['correo'].str.lower() == correo.lower()) &
-            (date_object == fecha) &
+            (df['fecha_nacimiento'] == fecha) &
             (df['telefono'] == telefono)
         ]
         
@@ -439,6 +439,8 @@ def onia2026():
         mes = request.form.get('mes').zfill(2)
         anio = request.form.get('anio')
         fecha_completa = f"{dia}/{mes}/{anio}"
+        if fecha_completa=='0':
+            fecha_completa=fecha_completa[1:]
         
         telefono = request.form.get('telefono')
         
@@ -460,7 +462,9 @@ def onia2026test():
         dia = request.form.get('dia')
         mes = request.form.get('mes')#.zfill(2)
         anio = request.form.get('anio')
-        fecha_completa = datetime.date(int(dia),int(mes),int(anio)) #f"{dia}/{mes}/{anio}"
+
+        fecha_completa = f"{dia}/{mes}/{anio}"
+        #fecha_completa = datetime.date(int(dia),int(mes),int(anio)) #f"{dia}/{mes}/{anio}"
         
         telefono = request.form.get('telefono')
         
