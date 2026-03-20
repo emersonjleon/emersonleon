@@ -408,12 +408,14 @@ def buscar_estudiante(correo, fecha, telefono):
         df = pd.read_csv('onia/onia2026keys.csv')
         # Limpieza básica de espacios
         df = df.apply(lambda x: x.astype(str).str.strip())
+
+        date_object = datetime.strptime(df['fecha_nacimiento'], "%d/%m/%Y").date()
         
         # Filtro de coincidencia
         resultado = df[
             #(df['nombre'].str.lower() == nombre.lower()) &
             (df['correo'].str.lower() == correo.lower()) &
-            (df['fecha_nacimiento'] == fecha) &
+            (date_object == fecha) &
             (df['telefono'] == telefono)
         ]
         
@@ -458,7 +460,7 @@ def onia2026test():
         dia = request.form.get('dia')
         mes = request.form.get('mes').zfill(2)
         anio = request.form.get('anio')
-        fecha_completa = f"{dia}/{mes}/{anio}"
+        fecha_completa = date(int(dia),int(mes),int(anio)) #f"{dia}/{mes}/{anio}"
         
         telefono = request.form.get('telefono')
         
