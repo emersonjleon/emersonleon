@@ -303,7 +303,27 @@ def visual():
     return render_template("visual.html", width=600, height=400,
                            spheresText=spheresText)
 
+@app.route("/visual2", methods=("GET", "POST"))
+def visual2():
+    spheres = []
+    for x in range(-10, 10, 1):
+        for y in range(-10, 10, 1):
+            spheres.append((10 * x, 10 * y, 10 * (x + y)))
 
+    # valores iniciales (se pueden fijar, o leer de query si quieres)
+    spheresText = threejsSpheresTextFiltered(
+        spheres,
+        coord_index=2,   # z
+        threshold=0,     # umbral inicial
+        objectname="mySpheres",
+    )
+
+    return render_template(
+        "visual2.html",
+        width=800,
+        height=600,
+        spheresText=spheresText,
+    )
 
 
 
@@ -366,6 +386,8 @@ def chipfiringvisualize(chipstring):
                            figure=figure)
 
 
+
+
 ####################################################################
 # ONIA 2026
 ####################################################################
@@ -424,6 +446,29 @@ def onia2026():
             flash("No coinciden los datos. Revisa mayúsculas, minúsculas y espacios.", "error")
             
     return render_template('onia/oniakey2026.html', clave=clave_encontrada)
+
+
+@app.route('/onia2026-test', methods=['GET', 'POST'])
+def onia2026():
+    clave_encontrada = None
+    if request.method == 'POST':
+        #nombre = request.form.get('nombre')
+        correo = request.form.get('correo').lower()
+        # Concatenamos la fecha para que coincida con el formato del CSV (ej: 15/05/2008)
+        dia = request.form.get('dia').zfill(2)
+        mes = request.form.get('mes').zfill(2)
+        anio = request.form.get('anio')
+        fecha_completa = f"{dia}/{mes}/{anio}"
+        
+        telefono = request.form.get('telefono')
+        
+        clave_encontrada = buscar_estudiante(correo, fecha_completa, telefono)
+        
+        if not clave_encontrada:
+            flash(f"No coinciden los datos. Revisa mayúsculas, minúsculas y espacios. datos: {correo}, {type(correo)}, {fecha_completa}, {type(fecha_completa)}, {telefono}, {type(telefono)}", "error")
+            
+    return render_template('onia/oniakey2026.html', clave=clave_encontrada)
+
 
 
 

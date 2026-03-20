@@ -61,7 +61,7 @@ def threejsSpheresText(spheres, objectname="mySpheres", radius='None'):
                             spherename=name)
     return text+f'\n  scene.add({objectname});'
 
-
+#cursor code
 def threejsSpheresTextFiltered(spheres, coord_index=2, threshold=0,
                                objectname="mySpheres", radius='None'):
     """
@@ -102,6 +102,10 @@ function applyFilter() {{
 applyFilter();
 """
     return base + extra
+
+#########################
+
+
 
 
 def chipfiringVisual(matrix, colorlist, spaces=20, scale=1, objectname="mySpheres"):
