@@ -505,7 +505,9 @@ from flask import jsonify
 #     "COL002": "BOGOTA_EDUSP",
 #     "PRUEBA": "12345"
 # }
-from oc.login import CLAVES_AUTORIZADAS,URL_DESTINO_FINAL 
+from oc.login import CLAVES_AUTORIZADAS
+
+URL_DESTINO_FINAL="https://emersonjleon.github.io/OCIA2026-examen.html" 
 
 
 
@@ -532,7 +534,7 @@ def login():
 
         # 3. Preparar variables para la página externa (Metadata)
         # Se pasan como parámetros en la URL
-        redireccion_completa = f"{URL_DESTINO_FINAL}?estudiante={nombre}&colegio={codigo}&sesion={hora_actual.replace(' ', '_')}"
+        redireccion_completa = f"{URL_DESTINO_FINAL}?estudiante={clave}&colegio={codigo}&sesion={hora_actual.replace(' ', '_')}"
 
         return jsonify({
             "status": "success",
@@ -543,9 +545,49 @@ def login():
         return jsonify({"status": "error", "message": "No autorizado"}), 401
 
 
+#========================================
 
-
-
+@app.route('/submit-examen', methods=['POST'])
+def submit_examen():
+    # 1. Recuperar los metadatos del estudiante y tiempos
+    clave = request.form.get('clave_estudiante')
+    colegio = request.form.get('colegio')
+    sesion = request.form.get('sesion')
+    hora_inicio = request.form.get('hora_inicio')
+    hora_final = request.form.get('hora_final')
+    
+    # 2. Recuperar las 18 respuestas
+    # Usamos .get('qX', '') por si algún dato llegara vacío por seguridad
+    respuestas = []
+    for i in range(1, 19):
+        respuestas.append(request.form.get(f'q{i}', '').strip())
+        
+    # 3. Preparar la fila completa para el CSV
+    fila_datos = [colegio, clave, sesion, hora_inicio, hora_final] + respuestas
+    
+    # Ruta del archivo CSV de respuestas (¡Asegúrate de cambiar TU_USUARIO!)
+    archivo_csv = 'oc/respuestas_olimpiada.csv'
+    
+    # Verificamos si el archivo ya existe para ponerle cabeceras (headers) si es nuevo
+    archivo_existe = os.path.exists(archivo_csv)
+    
+    try:
+        with open(archivo_csv, mode='a', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            
+            # Si es la primera vez que se crea, escribimos los nombres de las columnas
+            if not archivo_existe:
+                cabeceras = ['Colegio', 'Clave_Estudiante', 'Sesion_Login', 'Hora_Inicio', 'Hora_Final']
+                cabeceras += [f'Pregunta_{i}' for i in range(1, 19)]
+                writer.writerow(cabeceras)
+                
+            writer.writerow(fila_datos)
+            
+        return jsonify({"status": "success", "message": "Respuestas guardadas correctamente"})
+        
+    except Exception as e:
+        print(f"Error guardando respuestas: {e}")
+        return jsonify({"status": "error", "message": "Error interno del servidor"}), 500
 
 
 
