@@ -8,6 +8,9 @@ from datetime import datetime, date
 import time
 import json
 
+# para la olimpiada de IA
+from flask_cors import CORS
+
 #from dotenv import load_dotenv, find_dotenv
 #load_dotenv(find_dotenv())
 import sys
@@ -22,6 +25,9 @@ from chipfiring.threedfiring import chipfiring3d
 
 
 app = Flask(__name__)
+# Esto permite que CUALQUIER página envíe datos. 
+# En producción, puedes limitar esto a tu dominio de GitHub.
+CORS(app)
 
 def pickleLoad(filename):
     pickleobject = []
@@ -478,6 +484,75 @@ def onia2026test():
             flash(f"No coinciden los datos. Revisa mayúsculas, minúsculas y espacios. datos: {correo}, {type(correo)}, {fecha_completa}, {type(fecha_completa)}, {telefono}, {type(telefono)}", "error")
             
     return render_template('onia/oniakey2026.html', clave=clave_encontrada)
+
+########################################
+### login selectiva 2026
+##########################################
+
+import csv
+import datetime
+from flask import jsonify
+# from flask import Flask, request, jsonify
+# from flask_cors import CORS
+
+# app = Flask(__name__)
+# CORS(app)
+
+# --- CONFIGURACIÓN ---
+# Diccionario de claves autorizadas { 'clave_eduspace':'codigo_colegio' }
+# CLAVES_AUTORIZADAS = {
+#     "COL001": "IA_2024_PASS",
+#     "COL002": "BOGOTA_EDUSP",
+#     "PRUEBA": "12345"
+# }
+from oc.login import CLAVES_AUTORIZADAS,URL_DESTINO_FINAL 
+
+
+
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    nombre = request.form.get('nombre')
+    codigo = request.form.get('codigo')
+    clave = request.form.get('clave')
+
+    # 1. Validar credenciales
+    if clave in CLAVES_AUTORIZADAS: # and CLAVES_AUTORIZADAS[codigo] == clave:
+        
+        # 2. Registrar en archivo CSV
+        hora_actual = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        ip_usuario = request.remote_addr # IP del estudiante
+        user_agent = request.headers.get('User-Agent') # Navegador/Dispositivo
+
+        with open('/home/TU_USUARIO/mysite/registros_login.csv', mode='a', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            # Columnas: Nombre, Código, Clave Usada, Fecha/Hora, IP, Navegador
+            writer.writerow([nombre, codigo, clave, hora_actual, ip_usuario, user_agent])
+
+        # 3. Preparar variables para la página externa (Metadata)
+        # Se pasan como parámetros en la URL
+        redireccion_completa = f"{URL_DESTINO_FINAL}?estudiante={nombre}&colegio={codigo}&sesion={hora_actual.replace(' ', '_')}"
+
+        return jsonify({
+            "status": "success",
+            "redirect_url": redireccion_completa
+        })
+    
+    else:
+        return jsonify({"status": "error", "message": "No autorizado"}), 401
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
