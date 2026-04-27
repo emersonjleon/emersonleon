@@ -525,7 +525,7 @@ def login():
         ip_usuario = request.remote_addr # IP del estudiante
         user_agent = request.headers.get('User-Agent') # Navegador/Dispositivo
 
-        with open('/home/emersonjleon/oc/registros_login.csv', mode='a', newline='', encoding='utf-8') as f:
+        with open('oc/registros_login.csv', mode='a', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             # Columnas: Nombre, Código, Clave Usada, Fecha/Hora, IP, Navegador
             writer.writerow([nombre, codigo, clave, hora_actual, ip_usuario, user_agent])
